@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1541546685668.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1478934708",
+    "id" : "A9E9D825",
+    "lastKnownWriteTime" : 1541563126,
+    "last_content_update" : 1541563126832,
+    "path" : "~/misc_repos/food-violations/analysis.Rmd",
+    "project_path" : "analysis.Rmd",
+    "properties" : {
+        "cursorPosition" : "75,30",
+        "last_setup_crc32" : "",
+        "scrollLine" : "70",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

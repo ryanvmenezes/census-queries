@@ -1,0 +1,8 @@
+"0","violations <- read_csv('data.csv')"
+"2","Parsed with column specification:
+cols(
+  CITY = col_character(),
+  VIOLATIONS = col_integer(),
+  neighborhood = col_character()
+)
+"

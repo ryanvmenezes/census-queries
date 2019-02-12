@@ -1,0 +1,20 @@
+"0","race <- read_csv('mapla_race_LA_community_2016.csv')"
+"2","Parsed with column specification:
+cols(
+  community_name = col_character(),
+  community_type = col_character(),
+  community_parent = col_character(),
+  tot_pop_univ = col_double(),
+  white = col_double(),
+  black = col_double(),
+  asn = col_double(),
+  hisp = col_double(),
+  oth = col_double(),
+  pct_tot_pop_univ = col_double(),
+  pct_white = col_double(),
+  pct_black = col_double(),
+  pct_asn = col_double(),
+  pct_hisp = col_double(),
+  pct_oth = col_double()
+)
+"

@@ -1,0 +1,8 @@
+"0","joined <- cities.fb %>%"
+"0","  left_join(cities.race) %>% "
+"0","  left_join(violations) %>% "
+"0","  mutate(violations = replace_na(VIOLATIONS, 0))"
+"2","Joining, by = ""neighborhood""
+"
+"2","Joining, by = ""neighborhood""
+"

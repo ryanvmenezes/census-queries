@@ -1,0 +1,14 @@
+"0","fb <- read_csv('mapla_foreign_born_LA_community_2016.csv')"
+"2","Parsed with column specification:
+cols(
+  community_name = col_character(),
+  community_type = col_character(),
+  community_parent = col_character(),
+  tot_foreign_born_univ = col_double(),
+  native = col_double(),
+  foreign_born = col_double(),
+  pct_tot_foreign_born_univ = col_double(),
+  pct_native = col_double(),
+  pct_foreign_born = col_double()
+)
+"

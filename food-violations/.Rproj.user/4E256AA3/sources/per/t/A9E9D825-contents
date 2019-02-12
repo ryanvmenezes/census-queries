@@ -1,0 +1,116 @@
+---
+title: "food-violations"
+author: "Ryan Menezes"
+date: "November 5, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+violations <- read_csv('data.csv')
+```
+
+```{r}
+fb <- read_csv('mapla_foreign_born_LA_community_2016.csv')
+```
+
+```{r}
+race <- read_csv('mapla_race_LA_community_2016.csv')
+```
+
+```{r}
+la88 <- fb %>% 
+  filter(community_type == 'City') %>% 
+  select(community_parent)
+```
+
+```{r}
+cities.fb <- fb %>% 
+  filter(community_parent %in% la88$community_parent) %>% 
+  group_by(community_parent) %>% 
+  summarise(
+    foreign = sum(foreign_born),
+    native = sum(native),
+    population = foreign + native,
+    pctforeign = foreign / population
+  ) %>% 
+  rename(neighborhood = community_parent)
+```
+
+```{r}
+cities.race <- race %>% 
+  filter(community_parent %in% la88$community_parent) %>% 
+  group_by(community_parent) %>% 
+  summarise(
+    white = sum(white),
+    poc = sum(tot_pop_univ) - white,
+    pctpoc = poc / (white + poc)
+  ) %>% 
+  rename(neighborhood = community_parent)
+```
+
+```{r}
+joined <- cities.fb %>%
+  left_join(cities.race) %>% 
+  left_join(violations) %>% 
+  mutate(violations = replace_na(VIOLATIONS, 0))
+```
+```{r}
+ggplot(data = joined, mapping = aes(x = population, y = violations)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  scale_x_continuous(labels = scales::comma)
+```
+
+
+```{r}
+ggplot(data = joined, mapping = aes(x = pctpoc, y = violations)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  scale_x_continuous(labels = scales::percent)
+```
+
+```{r}
+ggplot(data = joined, mapping = aes(x = pctforeign, y = violations)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  scale_x_continuous(labels = scales::percent)
+```
+```{r}
+summary(lm(violations ~ population, data = joined))
+```
+
+
+```{r}
+summary(lm(violations ~ pctforeign, data = joined))
+```
+
+```{r}
+summary(lm(violations ~ pctpoc, data = joined))
+```
+
+```{r}
+summary(lm(violations ~ population + pctforeign, data = joined))
+```
+
+```{r}
+summary(lm(violations ~ population + pctpoc, data = joined))
+```
+
+```{r}
+summary(lm(violations ~ population + pctforeign + pctpoc, data = joined))
+```
+
+
+```{r}
+model <- lm(violations ~ population + pctforeign, data = joined)
+joined$resid <- model$residuals
+summary(model)
+```

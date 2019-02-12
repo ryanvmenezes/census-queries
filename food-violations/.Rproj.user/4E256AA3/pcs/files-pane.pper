@@ -1,0 +1,9 @@
+{
+    "path" : "~/misc_repos/food-violations",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

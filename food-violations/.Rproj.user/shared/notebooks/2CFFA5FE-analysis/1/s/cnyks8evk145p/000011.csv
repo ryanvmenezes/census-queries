@@ -1,0 +1,4 @@
+"0","ggplot(data = joined, mapping = aes(x = population, y = violations)) +"
+"0","  geom_point() +"
+"0","  geom_smooth(method = 'lm') +"
+"0","  scale_x_continuous(labels = scales::comma)"
