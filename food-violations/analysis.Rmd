@@ -14,7 +14,9 @@ library(tidyverse)
 ```
 
 ```{r}
-violations <- read_csv('data.csv')
+violations <- read_csv('data.csv') %>% 
+  group_by(neighborhood) %>% 
+  summarise(violations = sum(VIOLATIONS))
 ```
 
 ```{r}
@@ -26,9 +28,27 @@ race <- read_csv('mapla_race_LA_community_2016.csv')
 ```
 
 ```{r}
+regions <- read_csv('mapla_neighborhood2region.csv') %>% 
+  rename(neighborhood = community_parent)
+```
+
+
+```{r}
 la88 <- fb %>% 
   filter(community_type == 'City') %>% 
   select(community_parent)
+```
+
+```{r}
+la.fb <- fb %>%
+  filter(community_type == 'Incorporated neighborhood') %>% 
+  summarise(
+    neighborhood = 'Los Angeles',
+    foreign = sum(foreign_born),
+    native = sum(native),
+    population = foreign + native,
+    pctforeign = foreign / population
+  )
 ```
 
 ```{r}
@@ -41,8 +61,21 @@ cities.fb <- fb %>%
     population = foreign + native,
     pctforeign = foreign / population
   ) %>% 
-  rename(neighborhood = community_parent)
+  rename(neighborhood = community_parent) %>% 
+  bind_rows(la.fb)
 ```
+
+```{r}
+la.race <- race %>%
+  filter(community_type == 'Incorporated neighborhood') %>% 
+  summarise(
+    neighborhood = 'Los Angeles',
+    white = sum(white),
+    poc = sum(tot_pop_univ) - white,
+    pctpoc = poc / (white + poc)
+  )
+```
+
 
 ```{r}
 cities.race <- race %>% 
@@ -53,17 +86,25 @@ cities.race <- race %>%
     poc = sum(tot_pop_univ) - white,
     pctpoc = poc / (white + poc)
   ) %>% 
-  rename(neighborhood = community_parent)
+  rename(neighborhood = community_parent) %>% 
+  bind_rows(la.race)
 ```
 
 ```{r}
 joined <- cities.fb %>%
   left_join(cities.race) %>% 
   left_join(violations) %>% 
-  mutate(violations = replace_na(VIOLATIONS, 0))
+  left_join(regions) %>% 
+  mutate(
+    violations = replace_na(violations, 0),
+    vpp = violations / population * 10000
+  )
 ```
+
 ```{r}
-ggplot(data = joined, mapping = aes(x = population, y = violations)) +
+joined %>% 
+  filter(!(neighborhood %in% c('Los Angeles','Pasadena','Long Beach'))) %>% 
+  ggplot(mapping = aes(x = population, y = violations)) +
   geom_point() +
   geom_smooth(method = 'lm') +
   scale_x_continuous(labels = scales::comma)
@@ -71,18 +112,63 @@ ggplot(data = joined, mapping = aes(x = population, y = violations)) +
 
 
 ```{r}
-ggplot(data = joined, mapping = aes(x = pctpoc, y = violations)) +
+joined %>% 
+  filter(!(neighborhood %in% c('Los Angeles','Pasadena','Long Beach'))) %>% 
+  ggplot(mapping = aes(x = pctpoc, y = violations)) +
   geom_point() +
   geom_smooth(method = 'lm') +
   scale_x_continuous(labels = scales::percent)
 ```
 
 ```{r}
-ggplot(data = joined, mapping = aes(x = pctforeign, y = violations)) +
+joined %>% 
+  filter(!(neighborhood %in% c('Los Angeles','Pasadena','Long Beach'))) %>% 
+  ggplot(mapping = aes(x = pctforeign, y = violations)) +
   geom_point() +
   geom_smooth(method = 'lm') +
   scale_x_continuous(labels = scales::percent)
 ```
+
+```{r}
+joined %>% 
+  # filter(!(neighborhood %in% c('Los Angeles','Glendale','Long Beach','Pasadena'))) %>%
+  filter(neighborhood != 'Los Angeles') %>%
+  ggplot(mapping = aes(x = pctforeign, y = violations, label = neighborhood)) +
+  geom_text() +
+  geom_smooth(method = 'lm') +
+  scale_x_continuous(labels = scales::percent)
+```
+
+```{r}
+joined %>% 
+  filter(!(neighborhood %in% c('Long Beach','Pasadena'))) %>% 
+  filter(!(neighborhood %in% c('Glendale'))) %>%
+  filter(!(neighborhood %in% c('Los Angeles'))) %>%
+  ggplot(mapping = aes(x = pctforeign, y = violations, label = neighborhood)) +
+  geom_point() +
+  geom_smooth(method = 'lm') +
+  geom_point(
+    data = filter(joined, region == "San Gabriel Valley"),
+    mapping = aes(x = pctforeign, y = violations),
+    color = 'blue'
+  )
+```
+
+```{r}
+joined %>% 
+  filter(neighborhood != 'Vernon') %>%
+  ggplot(aes(x = pctforeign, y = vpp)) +
+  geom_point() +
+  geom_point(
+    data = filter(joined, (region == "San Gabriel Valley")),
+    mapping = aes(x = pctforeign, y = vpp),
+    color = 'blue'
+  )
+
+```
+
+# Test models
+
 ```{r}
 summary(lm(violations ~ population, data = joined))
 ```
@@ -107,10 +193,28 @@ summary(lm(violations ~ population + pctpoc, data = joined))
 ```{r}
 summary(lm(violations ~ population + pctforeign + pctpoc, data = joined))
 ```
-
+# Final model
 
 ```{r}
 model <- lm(violations ~ population + pctforeign, data = joined)
 joined$resid <- model$residuals
 summary(model)
 ```
+
+
+```{r}
+csv <- joined %>% 
+  filter(violations >= 5) %>%
+  select(neighborhood, region, population, pctforeign, violations, vpp) %>% 
+  arrange(-vpp) %>% 
+  head(10)
+```
+
+```{r}
+csv
+```
+
+```{r}
+write.csv(csv, 'table.csv',)
+```
+

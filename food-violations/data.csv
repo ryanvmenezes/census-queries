@@ -11,7 +11,7 @@ BELLFLOWER,2,Bellflower
 BEVERLY HILLS,5,Beverly Hills
 BURBANK,2,Burbank
 CANOGA PARK,7,Canoga Park
-CANYON COUNTRY,1,
+CANYON COUNTRY,1,Los Angeles
 CARSON,6,Carson
 CERRITOS,1,Cerritos
 CHATSWORTH,3,Chatsworth
@@ -30,11 +30,11 @@ GLENDORA,1,Glendora
 GRANADA HILLS,3,Granada Hills
 HAWTHORNE,3,Hawthorne
 HERMOSA BEACH,3,Hermosa Beach
-HOLLYWOOD,1,
+HOLLYWOOD,1,Los Angeles
 HUNTINGTON PARK,12,Huntington Park
 INGLEWOOD,16,Inglewood
 LA CANADA FLINTRIDGE,3,La Canada Flintridge
-LA CRESCENTA,2,La Crescenta-Montrose
+LA CRESCENTA,2,La Crescenta+AC0-Montrose
 LA PUENTE,8,La Puente
 LA VERNE,1,La Verne
 LAKE VIEW TERRACE,1,Lake View Terrace
@@ -42,7 +42,7 @@ LAKEWOOD,2,Lakewood
 LANCASTER,6,Lancaster
 LAWNDALE,1,Lawndale
 LENNOX,2,Lennox
-LOS ANGELES,350,
+LOS ANGELES,350,Los Angeles
 LYNWOOD,7,Lynwood
 MALIBU,1,Malibu
 MANHATTAN BEACH,5,Manhattan Beach
@@ -51,10 +51,10 @@ MAYWOOD,4,Maywood
 MONROVIA,2,Monrovia
 MONTEBELLO,9,Montebello
 MONTEREY PARK,14,Monterey Park
-NEWHALL,2,
+NEWHALL,2,Los Angeles
 NORTH HILLS,9,North Hills
-NORTH HOLLYWOOD,18,
-NORTHRIDGE,2,
+NORTH HOLLYWOOD,18,Los Angeles
+NORTHRIDGE,2,Los Angeles
 NORWALK,3,Norwalk
 PACIFIC PALISADES,1,Pacific Palisades
 PACOIMA,9,Pacoima
@@ -83,10 +83,10 @@ SOUTH PASADENA,1,South Pasadena
 STUDIO CITY,9,Studio City
 SYLMAR,10,Sylmar
 TEMPLE CITY,2,Temple City
-TOLUCA LAKE,1,
+TOLUCA LAKE,1,Los Angeles
 TORRANCE,10,Torrance
-VAN NUYS,16,
-VENICE,3,
+VAN NUYS,16,Los Angeles
+VENICE,3,Los Angeles
 VERNON,1,Vernon
 WALNUT,5,Walnut
 WEST COVINA,12,West Covina
