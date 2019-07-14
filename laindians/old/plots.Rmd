@@ -1,0 +1,49 @@
+---
+title: "Plots"
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+lacounty = read_csv('desi-la-county.csv')
+```
+
+```{r}
+lacounty %>% 
+  ggplot(aes(year, indian)) +
+  geom_line() +
+  geom_point() +
+  ggtitle("Indian population in L.A. County") +
+  ylab('Population') +
+  xlab('Year') +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal()
+```
+
+```{r}
+lacounty %>% 
+  gather(-year, key = 'country', value = 'population') %>% 
+  filter(country == 'indian' & year >= 2005) %>% 
+  ggplot(aes(year, population)) +
+  geom_line() +
+  ggtitle("Indian population in L.A. County, 2005-present") +
+  ylab('Population') +
+  xlab('Year') +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal()
+```
+
+```{r}
+lacounty %>% 
+  gather(-year, -total, key = 'country', value = 'population') %>% 
+  filter(country != 'indian' & year >= 2005) %>% 
+  ggplot(aes(year, population, color = country)) +
+  geom_line() +
+  ggtitle("Other Desi populations in L.A. County, 2005-present") +
+  ylab('Population') +
+  xlab('Year') +
+  scale_y_continuous(labels = scales::comma) +
+  theme_minimal()
+```
