@@ -1,0 +1,21 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(tidycensus)
+```
+
+```{r}
+iranians = get_acs(
+  geography = 'county',
+  variables = c(
+    total = 'B04006_001',
+    iranian = 'B04006_048'
+  ),
+  output = 'wide'
+)
+```
+

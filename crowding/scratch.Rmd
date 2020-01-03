@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(acs)
+```
+
+```{r}
+head(unique(acs.lookup(endyear = 2012, span = 5, table.name = "room", case.sensitive = F)@results[, c("table.number", "table.name")]))
+```
+
+```{r}
+api.key.install(key='45abd686abf7a53c954b1e3d26eadca0631584fa')
+```
+
+```{r}
+# geography identifier, set to grab all zip codes
+zcta_geo <- geo.make(zip.code = '*')
+
+# pulling the data set
+CROWD_DATA <- acs.fetch(endyear = 2012, span = 5, geo = zcta_geo, table.number = 'B25014', col.names = 'pretty')
+```
+
+
+
+```{r}
+head(CROWD_DATA@estimate)
+```
+
+```{r}
+crowded <- CROWD_DATA[,grep(pattern = '1.01|1.51|2.01', x = CROWD_DATA@acs.colnames)]
+```
+
+```{r}
+crowded_total <- apply(crowded, 2, sum)
+```
+
+```{r}
+crowding_pct <- divide.acs(numerator = crowded_total, denominator = CROWD_DATA[,1], method = 'proportion')
+head(crowding_pct)
+```
+
+```{r}
+crowding_usa <- data.frame(
+    zcta = geography(crowding_pct)[[1]],
+    total = as.numeric(estimate(CROWD_DATA[,1])),
+    crowded = as.numeric(estimate(crowded_total)),
+    pct = as.numeric(estimate(crowding_pct))
+)
+head(crowding_usa)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+crowding_usa %>%
+  ggplot(aes(total)) +
+  geom_histogram()
+```
+
+```{r}
+nrow(crowding_usa %>%  filter(crowding_usa)) / nrow(crowding_usa)
+```
+
+
+```{r}
+crowding_usa %>% 
+  filter(total == 25) %>% 
+  ggplot(aes(crowded)) +
+  geom_histogram()
+%>% 
+  ggplot(aes(crowded, n)) +
+  geom_bar()
+```
+
