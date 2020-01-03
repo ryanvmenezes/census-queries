@@ -1,0 +1,10 @@
+Count of South Asians in L.A. County
+
+ROW
+year
+
+COLUMN
+raced
+
+SELECTION FILTER
+year(1990,2000,2010,2017) statefip(06) countyfip(037) raced(610,641,643,669,670) hispan(0)

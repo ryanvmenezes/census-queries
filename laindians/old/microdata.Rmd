@@ -1,0 +1,42 @@
+---
+title: "Counting Indians"
+---
+
+```{r}
+# install.packages('devtools')
+# devtools::install_github("mnpopcenter/ipumsr")
+```
+
+
+```{r}
+library(tidyverse)
+library(ipumsr)
+```
+
+```{r}
+ddi = read_ipums_ddi("usa_00005.xml")
+data = read_ipums_micro(ddi)
+```
+
+```{r}
+ipums_view(data)
+```
+
+```{r}
+ipums_var_label(ddi, PUMA)
+```
+
+```{r}
+indiansbypuma = data %>% 
+  filter(RACED == 610) %>% 
+  filter(HISPAN == 0) %>% 
+  filter(STATEFIP == 6) %>% 
+  filter(COUNTYFIP == 37) %>% 
+  group_by(PUMA) %>% 
+  summarise(total = sum(PERWT))
+```
+
+```{r}
+indiansbypuma
+```
+

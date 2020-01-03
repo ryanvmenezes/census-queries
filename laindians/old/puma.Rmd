@@ -1,0 +1,70 @@
+---
+title: "Mapping"
+---
+
+```{r}
+library(sf)
+library(tidyverse)
+```
+
+```{r}
+shp = read_sf('/home/ryan/shapefiles/puma/ipums_puma_2010.shp')
+```
+
+```{r}
+shp %>% 
+  st_transform(4326)
+```
+
+```{r}
+tmp = read_sf('/home/ryan/shapefiles/mapping-la/la-county-neighborhoods-current.geojson')
+```
+
+```{r}
+tmp
+```
+
+
+```{r}
+head(shp)
+```
+
+```{r}
+lacounty = shp %>% 
+  filter(State == 'California') %>% 
+  filter(str_detect(Name, "Los Angeles County")) %>% 
+  select(puma = PUMA, Name) %>% 
+  st_transform(3857)
+
+write_sf(lacounty, 'la-county-puma.geojson', delete_dsn = TRUE)
+write_sf(lacounty, 'la-county-puma.csv', delete_dsn = TRUE)
+```
+
+```{r}
+head(lacounty)
+```
+
+
+```{r}
+counts = read_csv('desi-puma-la-county.csv')
+```
+
+```{r}
+counts = counts %>% 
+  mutate(puma = str_pad(puma, width = 5, side = 'left', pad = '0'))
+```
+
+
+```{r}
+head(counts)
+```
+
+```{r}
+joined = lacounty %>% 
+  full_join(counts)
+```
+
+```{r}
+write_sf(joined, 'la-county-desis.geojson')
+```
+

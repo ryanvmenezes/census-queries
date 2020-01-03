@@ -1,0 +1,106 @@
+---
+title: "Entropy of LA county census tracts"
+---
+
+```{r}
+library(sf)
+library(tidyverse)
+library(tidycensus)
+```
+
+```{r}
+hoods = read_sf('/home/ryan/shapefiles/mapping-la/la-county-neighborhoods-current.geojson') %>% 
+  st_transform(crs = 4269)
+```
+
+```{r}
+hoods
+```
+
+
+```{r}
+geototalraw = get_acs(
+  geography = 'tract',
+  variables = c(total = 'B03002_001'),
+  state = "CA",
+  county = "Los Angeles",
+  geometry = TRUE
+)
+
+geototal = geototalraw %>% 
+  select(tractid = GEOID, population = estimate, geometry)
+```
+
+```{r}
+geototal
+```
+
+```{r}
+tracthood = geototal %>% 
+  st_point_on_surface() %>% 
+  st_join(
+    hoods %>% select(name),
+    join = st_within
+  ) %>% 
+  st_set_geometry(NULL) %>%
+  select(tractid, hoodname = name)
+```
+
+
+```{r}
+raceraw = get_acs(
+  geography = 'tract',
+  variables = c(
+    total = 'B03002_001',
+    white = 'B03002_003',
+    black = 'B03002_004',
+    other = 'B03002_005',
+    asian = 'B03002_006',
+    other = 'B03002_007',
+    other = 'B03002_008',
+    other = 'B03002_009',
+    latino = 'B03002_012'
+  ),
+  state = "CA",
+  county = "Los Angeles",
+)
+
+race = raceraw %>% 
+  group_by(tractid = GEOID, variable) %>% 
+  summarise(total = sum(estimate)) %>% 
+  spread(variable, total) %>% 
+  mutate(pct_asian = asian / total,
+         pct_black = black / total,
+         pct_latino = latino / total,
+         pct_other = other / total,
+         pct_white = white / total) %>% 
+  select(tractid, white, asian:other, total, pct_white, pct_asian:pct_other)
+
+race
+```
+
+```{r}
+entropy = tracthood %>% 
+  full_join(race) %>% 
+  mutate(e_white = replace_na(pct_white * log(1 / pct_white), 0),
+         e_asian = replace_na(pct_asian * log(1 / pct_asian), 0),
+         e_black = replace_na(pct_black * log(1 / pct_black), 0),
+         e_latino = replace_na(pct_latino * log(1 / pct_latino), 0),
+         e_other = replace_na(pct_other * log(1 / pct_other), 0),
+         entropy = e_white + e_asian + e_black + e_latino + e_other) %>% 
+  full_join(geototal %>% select(tractid))
+
+entropy
+```
+
+```{r}
+write_sf(entropy, 'entropy.geojson')
+```
+
+```{r}
+entropy %>% 
+  ggplot(aes(entropy, ..density..)) +
+  geom_histogram() +
+  geom_density()
+```
+

@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(sf)
+library(tidyverse)
+library(tidycensus)
+```
+
+```{r}
+nhgis = read_csv('nhgis0004_ds234_20175_2017_tract.csv')
+```
+
+```{r}
+geototalraw = get_acs(
+  geography = 'tract',
+  variables = c(total = 'B03002_001'),
+  state = "CA",
+  county = "Los Angeles",
+  geometry = TRUE,
+  output = 'wide'
+)
+```
+
+
+```{r}
+la = nhgis %>% 
+  filter(STATEA == '06') %>% 
+  filter(COUNTYA == '037') %>% 
+  mutate(year = YEAR,
+         state = STATE,
+         statefp = STATEA,
+         county = COUNTY,
+         countyfp = COUNTYA,
+         tract = TRACTA,
+         name = NAME_E,
+         indian = as.numeric(AH8LE002),
+         bangladeshi = as.numeric(AH8LE003),
+         pakistani = as.numeric(AH8LE018),
+         srilankan = as.numeric(AH8LE019),
+         moeindian = as.numeric(AH8LM002),
+         moebangladeshi = as.numeric(AH8LM003),
+         moepakistani = as.numeric(AH8LM018),
+         moesrilankan = as.numeric(AH8LM019),) %>% 
+  mutate(pctmoeindian = moeindian / indian,
+         pctmoebangladeshi = moebangladeshi / bangladeshi,
+         pctmoepakistani = moepakistani / pakistani,
+         pctmoesrilankan = moesrilankan / srilankan) %>% 
+  mutate(GEOID = str_c(statefp, countyfp, tract)) %>% 
+  select(year,
+         state,
+         statefp,
+         county,
+         countyfp,
+         tract,
+         name,
+         indian,
+         # bangladeshi,
+         # pakistani,
+         # srilankan,
+         moeindian,
+         # moebangladeshi,
+         # moepakistani,
+         # moesrilankan,
+         pctmoeindian,
+         # pctmoebangladeshi,
+         # pctmoepakistani,
+         # pctmoesrilankan,
+         GEOID)
+```
+
+```{r}
+la %>%
+  full_join(geototalraw) %>% 
+  write_sf('la-county-indian-nhgis.geojson')
+```
+
