@@ -87,14 +87,40 @@ top10.by.year = lang.by.year %>%
   filter(rankinyear <= 10) %>% 
   ungroup()
 
-top10.by.year %>% 
+t10.lang = top10.by.year %>% 
   select(year, rankinyear, language) %>% 
   pivot_wider(names_from = year, values_from = language)
 
-top10.by.year %>% 
+t10.pct = top10.by.year %>% 
   select(year, pop.pct, rankinyear) %>% 
   pivot_wider(names_from = year, values_from = pop.pct)
 
+t10.counts = top10.by.year %>% 
+  select(year, popcount, rankinyear) %>% 
+  pivot_wider(names_from = year, values_from = popcount)
+
+t10.lang
+t10.pct
+t10.counts
+
+
+
+t10.master = t10.lang %>%
+  left_join(
+    t10.counts,
+    by = 'rankinyear',
+    suffix = c('_lang', '_count')
+  ) %>% 
+  left_join(
+    t10.pct %>% 
+      rename_at(vars(-rankinyear), ~str_c(., '_pct')),
+    by = 'rankinyear',
+  ) %>% 
+  select(rankinyear, starts_with('1980'), starts_with('1990'), starts_with('2000'), starts_with('2010'), starts_with('2018'))
+
+t10.master
+
+t10.master %>% write_csv('top-10-la-county-by-year.csv')
 
 top10.by.year %>% distinct(language)
 
