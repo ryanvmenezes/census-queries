@@ -41,7 +41,7 @@ lang.xwalk %>% head(15)
 
 lang.xwalk$languagef
 
-lang.by.year %>% 
+plot.all = lang.by.year %>% 
   left_join(lang.xwalk %>% select(-n)) %>% 
   filter(languagef != 'Other') %>% 
   ggplot(aes(languagef, pop.pct * 100, fill = languagef)) +
@@ -53,7 +53,9 @@ lang.by.year %>%
   theme_minimal() +
   theme(axis.text.x = element_blank(), axis.title.x = element_blank())
 
-lang.by.year %>% 
+ggsave('top-languages.pdf', device = 'pdf', width = 10, height = 8, units = 'in')
+
+plot.no.eng.no.spa = lang.by.year %>% 
   left_join(lang.xwalk %>% select(-n)) %>% 
   filter(languagef != 'Other') %>% 
   group_by(year) %>%
@@ -62,7 +64,6 @@ lang.by.year %>%
   ggplot(aes(languagef, pop.pct * 100, fill = languagef)) +
   geom_bar(stat = 'identity', position = 'dodge') +
   facet_wrap(year ~ ., nrow = 1) +
-  # geom_text(aes(languagef, pop.pct * 100 + 0.05, label = rankinyear), size = 3) +
   geom_text(aes(languagef, pop.pct * 100 + 0.18, label = formatC(popcount, format="d", big.mark=",")), size = 3, angle = 90) +
   scale_fill_brewer(palette = "Paired", name = 'Language') +
   ylab('Percent of L.A. County population') +
@@ -70,6 +71,7 @@ lang.by.year %>%
   theme_minimal() +
   theme(axis.text.x = element_blank(), axis.title.x = element_blank())
 
+ggsave('top-languages-no-eng-no-spa.pdf', device = 'pdf', width = 10, height = 8, units = 'in')
 
 lang.by.year %>% 
   left_join(lang.xwalk %>% select(-n)) %>% 
@@ -86,6 +88,16 @@ top10.by.year = lang.by.year %>%
   mutate(rankinyear = rank(desc(popcount))) %>% 
   filter(rankinyear <= 10) %>% 
   ungroup()
+
+top10.by.year
+
+
+top10.by.year %>% 
+  ggplot(aes(x = year, y = rankinyear, color = language)) +
+  geom_point(aes(size = popcount)) +
+  geom_line() +
+  scale_y_reverse() +
+  theme_minimal() 
 
 t10.lang = top10.by.year %>% 
   select(year, rankinyear, language) %>% 
