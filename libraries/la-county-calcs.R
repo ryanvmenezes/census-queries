@@ -1,4 +1,3 @@
-library(rvest)
 library(tidyverse)
 
 lang.raw = read_csv('languages-la-county.csv')
@@ -8,10 +7,17 @@ lang.by.year = lang.raw %>%
   pivot_longer(`1980`:`2018`, names_to = 'year', values_to = 'popcount') %>% 
   mutate(
     year = parse_integer(year),
-    popcount = str_split(popcount, '\n'),
-    popcount = map_chr(popcount, `[[`, 3),
-    popcount = parse_number(popcount)
+    popcount = popcount %>% 
+      str_split('\n') %>% 
+      map_chr(`[[`, 3) %>% 
+      parse_number(),
+    LANGUAGE = language,
+    language = language %>% 
+      str_replace('^\\d+:\\s', '') %>% 
+      word() %>%
+      str_replace_all(',', '')
   ) %>% 
+  select(LANGUAGE, everything()) %>% 
   group_by(year) %>% 
   mutate(pop.pct = popcount / sum(popcount)) %>% 
   ungroup() %>% 
@@ -25,15 +31,12 @@ lang.xwalk = lang.by.year %>%
   arrange(-n) %>% 
   mutate(
     n = case_when(
-      str_starts(language, '0: N/A') ~ 0,
+      str_starts(language, 'N/A') ~ 0,
       TRUE ~ n
     )
   ) %>% 
   mutate(
-    languagef = str_replace(language, '^\\d+:\\s', ''),
-    languagef = word(languagef),
-    languagef = str_replace_all(languagef, ',', ''),
-    languagef = fct_lump(languagef, n = 10, w = n),
+    languagef = fct_lump(language, n = 10, w = n),
     languagef = fct_reorder(languagef, n)
   )
 
@@ -53,6 +56,8 @@ plot.all = lang.by.year %>%
   theme_minimal() +
   theme(axis.text.x = element_blank(), axis.title.x = element_blank())
 
+plot.all
+
 ggsave('top-languages.pdf', device = 'pdf', width = 10, height = 8, units = 'in')
 
 plot.no.eng.no.spa = lang.by.year %>% 
@@ -64,12 +69,14 @@ plot.no.eng.no.spa = lang.by.year %>%
   ggplot(aes(languagef, pop.pct * 100, fill = languagef)) +
   geom_bar(stat = 'identity', position = 'dodge') +
   facet_wrap(year ~ ., nrow = 1) +
-  geom_text(aes(languagef, pop.pct * 100 + 0.18, label = formatC(popcount, format="d", big.mark=",")), size = 3, angle = 90) +
+  # geom_text(aes(languagef, pop.pct * 100 + 0.18, label = formatC(popcount, format="d", big.mark=",")), size = 3, angle = 90) +
   scale_fill_brewer(palette = "Paired", name = 'Language') +
   ylab('Percent of L.A. County population') +
   ggtitle('Most-spoken languages in L.A. County, excluding English and Spanish') +
   theme_minimal() +
   theme(axis.text.x = element_blank(), axis.title.x = element_blank())
+
+plot.no.eng.no.spa
 
 ggsave('top-languages-no-eng-no-spa.pdf', device = 'pdf', width = 10, height = 8, units = 'in')
 
@@ -91,13 +98,65 @@ top10.by.year = lang.by.year %>%
 
 top10.by.year
 
-
-top10.by.year %>% 
-  ggplot(aes(x = year, y = rankinyear, color = language)) +
-  geom_point(aes(size = popcount)) +
+lang.by.year %>% 
+  mutate(
+    language = if_else(language %in% c('English','Spanish'), language, 'Other')
+  ) %>% 
+  group_by(language, year) %>% 
+  summarise(popcount = sum(popcount), pop.pct = sum(pop.pct)) %>% 
+  ggplot(aes(year, pop.pct, color = language)) +
   geom_line() +
-  scale_y_reverse() +
-  theme_minimal() 
+  geom_point() + 
+  theme_minimal()
+
+t10.plot = top10.by.year %>% 
+  ggplot(aes(x = year, y = rankinyear, group = language)) +
+  geom_point(aes(size = popcount), color = 'grey') +
+  geom_line(color = 'grey') +
+  geom_point(
+    data = . %>% filter(rankinyear > 4),
+    aes(color = language, size = popcount)
+  ) +
+  geom_line(
+    data = . %>% filter(rankinyear > 4),
+    aes(color = language)
+  ) +
+  # names at end
+  geom_text(
+    data = . %>% group_by(language) %>% filter(year == max(year)),
+    aes(year + 0.6, rankinyear, label = language),
+    hjust = 'left',
+    size = 3.5
+  ) +
+  scale_x_continuous(
+    limits = c(1980, 2021),
+    breaks = c(1980, 1990, 2000, 2010, 2018),
+  ) +
+  # # names at beginning
+  # geom_text(
+  #   data = . %>% group_by(language) %>% filter(year == min(year)),
+  #   aes(year - 0.7, rankinyear, label = language),
+  #   hjust = 'right',
+  #   size = 3.5
+  # ) +
+  # scale_x_continuous(
+  #   limits = c(1978, 2018),
+  #   breaks = c(1980, 1990, 2000, 2010, 2018),
+  # ) +
+  scale_colour_brewer(palette = 'Paired') +
+  scale_y_reverse(
+    breaks = 1:10
+  ) +
+  theme_minimal() +
+  theme(legend.position = 'none') +
+  ylab('Rank in year') +
+  xlab('') + 
+  ggtitle('Top 10 languages spoken in L.A. County')
+
+t10.plot
+
+ggsave('top-10.pdf', device = 'pdf', width = 10, height = 8, units = 'in')
+
 
 t10.lang = top10.by.year %>% 
   select(year, rankinyear, language) %>% 
@@ -133,6 +192,8 @@ t10.master = t10.lang %>%
 t10.master
 
 t10.master %>% write_csv('top-10-la-county-by-year.csv')
+
+top10.by.year %>% write_csv('top-10-la-county-by-year-long.csv')
 
 top10.by.year %>% distinct(language)
 
