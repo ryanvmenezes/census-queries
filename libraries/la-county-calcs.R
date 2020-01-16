@@ -109,6 +109,18 @@ lang.by.year %>%
   geom_point() + 
   theme_minimal()
 
+eng.spa.other.by.year = lang.by.year %>% 
+  filter(language %in% c('English', 'Spanish')) %>% 
+  select(language, year, pop.pct)
+  # group_by(language, year) %>% 
+  # summarise(popcount = sum(popcount), pop.pct = sum(pop.pct))
+  # select(-popcount) %>% 
+  # pivot_wider(names_from = 'year', values_from = 'pop.pct')
+
+eng.spa.other.by.year
+  
+eng.spa.other.by.year %>% write_csv('la-county-eng-spa-other-by-year.csv')
+
 t10.plot = top10.by.year %>% 
   ggplot(aes(x = year, y = rankinyear, group = language)) +
   geom_point(aes(size = popcount), color = 'grey') +
@@ -208,3 +220,13 @@ top10.by.year %>% distinct(language)
 #   facet_wrap(language ~ ., scales = 'free') +
 #   ylab('Percent of L.A. County population') +
 #   theme_minimal()
+
+top13 = top10.by.year %>% 
+  distinct(language) %>% 
+  left_join(lang.by.year) %>% 
+  filter(year %in% c(1980, 2018)) %>% 
+  select(language, year, pop.pct) %>% 
+  pivot_wider(names_from = 'year', values_from = 'pop.pct')
+
+top13 %>% write_csv('top13.csv')
+  
