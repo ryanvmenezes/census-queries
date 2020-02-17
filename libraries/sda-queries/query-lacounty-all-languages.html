@@ -1,0 +1,887 @@
+<HTML lang="en">
+<HEAD>
+
+<TITLE>Tables - SDA</TITLE>
+<style type="text/css">
+<!-- 
+body {
+color: black; background: white;
+font-family: arial, helvetica, verdana, geneva, sans-serif;
+}
+h1 { font-size: 1.5em; }
+h2 { font-size: 1.17em; }
+h3 { font-size: 1em; }
+h4 { font-size: .83em; }
+table.dflt {
+border-collapse: collapse;
+}
+table.dflt td, table.dflt th {
+padding: 5px;
+border: 1px solid #C0C0C0;
+}
+table.noborder {
+border-collapse: collapse;
+}
+table.noborder td, table.noborder th {
+padding: 2px;
+border: none;
+}
+div.barchart {
+background-color: #009999;
+height: 1.0em;
+}
+-->
+</style>
+</HEAD>
+<BODY>
+
+<!-- Overall table definition -->
+<TABLE class="dflt">
+
+<!-- SDA banner -->
+<TR><TD>
+<STRONG>SDA 4.0: Tables</STRONG><P>
+
+</TD></TR>
+
+<!-- Study and Date -->
+<TR><TD>
+Jan 16, 2020  (Thu 01:20 AM UTC)</TD></TR>
+<TR><TD>
+<TABLE class="dflt">
+<TR>
+<TH ALIGN=center BGCOLOR=#93BED5 COLSPAN=6>Variables</TH>
+</TR>
+<TR>
+<TH scope=col>Role</TH>
+<TH scope=col>Name</TH>
+<TH scope=col>Label</TH>
+<TH scope=col>Range</TH>
+<TH scope=col>MD</TH>
+<TH scope=col>Dataset</TH>
+</TR>
+<TR>
+<TD>Row</TD>
+<TD><STRONG>language</STRONG></TD>
+<TD>Language spoken</TD>
+<TD ALIGN=center>0-96</TD>
+<TD ALIGN=center><BR></TD>
+<TD ALIGN=center>1</TD>
+</TR>
+<TR>
+<TD>Column</TD>
+<TD><STRONG>year</STRONG></TD>
+<TD>Census year</TD>
+<TD ALIGN=center>1850-2018</TD>
+<TD ALIGN=center><BR></TD>
+<TD ALIGN=center>1</TD>
+</TR>
+<TR>
+<TD>Weight</TD>
+<TD><STRONG>perwt</STRONG></TD>
+<TD>Person weight</TD>
+<TD ALIGN=center>.00-4,044.00</TD>
+<TD ALIGN=center><BR></TD>
+<TD ALIGN=center>1</TD>
+</TR>
+<TR>
+<TD>Filter</TD>
+<TD><STRONG>year(1980,1990,2000,2010,2018)</STRONG></TD>
+<TD>Census year</TD>
+<TD ALIGN=center>1850-2018</TD>
+<TD ALIGN=center><BR></TD>
+<TD ALIGN=center>1</TD>
+</TR>
+<TR>
+<TD>Filter</TD>
+<TD><STRONG>statefip(6)</STRONG></TD>
+<TD>State (FIPS code)(=California)</TD>
+<TD ALIGN=center>1-99</TD>
+<TD ALIGN=center><BR></TD>
+<TD ALIGN=center>1</TD>
+</TR>
+<TR>
+<TD>Filter</TD>
+<TD><STRONG>countyfip(37)</STRONG></TD>
+<TD>County (FIPS code)</TD>
+<TD ALIGN=center>0-810</TD>
+<TD ALIGN=center><BR></TD>
+<TD ALIGN=center>1</TD>
+</TR>
+</TABLE>
+</TD></TR>
+
+<!-- Main Tabular Display of Cells -->
+<TR><TD>
+<TABLE class="dflt">
+<TR>
+<TH ALIGN=center BGCOLOR=#93BED5 COLSPAN=8>Frequency Distribution</TH>
+</TR>
+<TR ALIGN=center>
+<TD ALIGN=left COLSPAN=2 ROWSPAN=2>Cells contain:<BR>-<STRONG>Column percent</STRONG><BR>-Confidence Intervals (95 percent)<BR>-Weighted N<BR></TD>
+<TH COLSPAN=6 scope=col>year</TH>
+</TR>
+<TR ALIGN=center>
+<TD WIDTH=50>1980<BR>1980</TD>
+<TD WIDTH=50>1990<BR>1990</TD>
+<TD WIDTH=50>2000<BR>2000</TD>
+<TD WIDTH=50>2010<BR>2010</TD>
+<TD WIDTH=50>2018<BR>2018</TD>
+<TH scope=col><EM>ROW<BR>TOTAL</EM></TH>
+</TR>
+<TR ALIGN=right>
+<TH ROWSPAN=76 scope=row>language</TH>
+<TD ALIGN=left>0: N&#x2F;A or blank</TD>
+<TD BGCOLOR=#66ccff><STRONG>4.6</STRONG><BR><font size=-1><em>(4.5-4.8)</em></font><BR>347,300.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>8.3</STRONG><BR><font size=-1><em>(8.1-8.5)</em></font><BR>731,861.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>7.7</STRONG><BR><font size=-1><em>(7.5-7.8)</em></font><BR>727,893.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>6.5</STRONG><BR><font size=-1><em>(6.4-6.7)</em></font><BR>640,839.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>6.0</STRONG><BR><font size=-1><em>(5.8-6.1)</em></font><BR>602,825.0</TD>
+<TD><EM><STRONG>6.7</STRONG></EM><BR><font size=-1><em>(6.6-6.7)</em></font><BR><EM>3,050,718.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>1: English</TD>
+<TD BGCOLOR=#ff6666><STRONG>64.8</STRONG><BR><font size=-1><em>(64.5-65.2)</em></font><BR>4,860,300.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>50.2</STRONG><BR><font size=-1><em>(49.8-50.5)</em></font><BR>4,420,468.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>42.8</STRONG><BR><font size=-1><em>(42.5-43.1)</em></font><BR>4,068,318.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>40.0</STRONG><BR><font size=-1><em>(39.7-40.3)</em></font><BR>3,930,328.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>40.7</STRONG><BR><font size=-1><em>(40.4-41.0)</em></font><BR>4,108,477.0</TD>
+<TD><EM><STRONG>46.8</STRONG></EM><BR><font size=-1><em>(46.6-46.9)</em></font><BR><EM>21,387,891.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>2: German</TD>
+<TD BGCOLOR=#ff6666><STRONG>.6</STRONG><BR><font size=-1><em>(0.6-0.7)</em></font><BR>47,900.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>37,284.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.3)</em></font><BR>28,688.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.3</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>25,408.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>19,450.0</TD>
+<TD><EM><STRONG>.3</STRONG></EM><BR><font size=-1><em>(0.3-0.4)</em></font><BR><EM>158,730.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>3: Yiddish, Jewish</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>21,100.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>9,087.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,304.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,617.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,969.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>38,077.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>4: Dutch</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,900.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>11,557.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,954.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>5,441.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,745.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>38,597.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>5: Swedish</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,800.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,731.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,572.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>3,408.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>3,622.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>19,133.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>6: Danish</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,000.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,535.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,483.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>911.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,094.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>9,023.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>7: Norwegian</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,200.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,443.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,345.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,175.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>478.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>6,641.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>8: Icelandic</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>200.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>104.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>608.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>912.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>10: Italian</TD>
+<TD BGCOLOR=#ff6666><STRONG>.6</STRONG><BR><font size=-1><em>(0.5-0.6)</em></font><BR>41,700.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.4)</em></font><BR>27,911.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>20,541.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>14,562.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>11,749.0</TD>
+<TD><EM><STRONG>.3</STRONG></EM><BR><font size=-1><em>(0.2-0.3)</em></font><BR><EM>116,463.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>11: French</TD>
+<TD BGCOLOR=#ff6666><STRONG>.5</STRONG><BR><font size=-1><em>(0.5-0.6)</em></font><BR>37,600.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>37,934.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>42,177.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.4)</em></font><BR>33,962.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.4)</em></font><BR>39,993.0</TD>
+<TD><EM><STRONG>.4</STRONG></EM><BR><font size=-1><em>(0.4-0.4)</em></font><BR><EM>191,666.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>12: Spanish</TD>
+<TD BGCOLOR=#66ccff><STRONG>21.2</STRONG><BR><font size=-1><em>(20.9-21.5)</em></font><BR>1,591,300.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>28.8</STRONG><BR><font size=-1><em>(28.5-29.1)</em></font><BR>2,535,832.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>34.6</STRONG><BR><font size=-1><em>(34.3-34.9)</em></font><BR>3,284,168.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>37.2</STRONG><BR><font size=-1><em>(36.9-37.5)</em></font><BR>3,659,345.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>37.0</STRONG><BR><font size=-1><em>(36.7-37.3)</em></font><BR>3,741,860.0</TD>
+<TD><EM><STRONG>32.4</STRONG></EM><BR><font size=-1><em>(32.2-32.5)</em></font><BR><EM>14,812,505.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>13: Portuguese</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,600.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,735.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,222.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>15,477.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>19,640.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>58,674.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>14: Rumanian</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,000.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,602.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>5,102.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,912.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>3,434.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.1)</em></font><BR><EM>21,050.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>15: Celtic</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>800.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,261.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>882.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>260.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>387.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>3,590.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>16: Greek</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>10,400.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>10,101.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>6,860.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,033.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,686.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>38,080.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>17: Albanian</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>200.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>169.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>339.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>103.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>811.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>18: Russian</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>15,400.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>21,853.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.5</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>44,178.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.5</STRONG><BR><font size=-1><em>(0.5-0.6)</em></font><BR>50,910.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.5</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>47,840.0</TD>
+<TD><EM><STRONG>.4</STRONG></EM><BR><font size=-1><em>(0.4-0.4)</em></font><BR><EM>180,181.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>19: Ukrainian, Ruthenian, Little Russian</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,500.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,288.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,478.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,815.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,907.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>10,988.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>20: Czech</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,500.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,833.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,455.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,295.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,127.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>8,210.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>21: Polish</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>11,800.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>9,659.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,762.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,494.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,296.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>38,011.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>22: Slovak</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>600.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>468.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,041.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>355.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>518.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>2,982.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>23: Serbo-Croatian, Yugoslavian, Slavonian</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,700.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,814.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,432.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,699.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>5,324.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>38,969.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>24: Slovene</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>300.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>143.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>290.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>733.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>25: Lithuanian</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,900.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,288.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,132.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,469.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>546.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>12,335.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>26: Other Balto-Slavic</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>200.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>689.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,884.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,999.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>3,638.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>8,410.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>28: Armenian</TD>
+<TD BGCOLOR=#66ccff><STRONG>.5</STRONG><BR><font size=-1><em>(0.5-0.6)</em></font><BR>39,500.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>1.1</STRONG><BR><font size=-1><em>(1.0-1.2)</em></font><BR>97,006.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>1.4</STRONG><BR><font size=-1><em>(1.3-1.4)</em></font><BR>129,361.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>1.7</STRONG><BR><font size=-1><em>(1.6-1.8)</em></font><BR>165,571.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>1.7</STRONG><BR><font size=-1><em>(1.6-1.8)</em></font><BR>169,458.0</TD>
+<TD><EM><STRONG>1.3</STRONG></EM><BR><font size=-1><em>(1.3-1.3)</em></font><BR><EM>600,896.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>29: Persian, Iranian, Farsi</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>15,600.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.5</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>43,537.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.8</STRONG><BR><font size=-1><em>(0.7-0.8)</em></font><BR>72,628.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.7</STRONG><BR><font size=-1><em>(0.6-0.7)</em></font><BR>66,967.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.7</STRONG><BR><font size=-1><em>(0.7-0.8)</em></font><BR>72,613.0</TD>
+<TD><EM><STRONG>.6</STRONG></EM><BR><font size=-1><em>(0.6-0.6)</em></font><BR><EM>271,345.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>30: Other Persian dialects</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>300.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>182.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>66.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>128.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>314.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>990.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>31: Hindi and related</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>14,900.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.4</STRONG><BR><font size=-1><em>(0.3-0.4)</em></font><BR>31,980.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.6</STRONG><BR><font size=-1><em>(0.5-0.6)</em></font><BR>53,934.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.7</STRONG><BR><font size=-1><em>(0.6-0.7)</em></font><BR>65,257.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.8</STRONG><BR><font size=-1><em>(0.7-0.8)</em></font><BR>79,249.0</TD>
+<TD><EM><STRONG>.5</STRONG></EM><BR><font size=-1><em>(0.5-0.6)</em></font><BR><EM>245,320.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>32: Romany, Gypsy</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,500.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>559.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>2,059.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>33: Finnish</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,200.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,612.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>830.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,302.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>606.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>5,550.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>34: Magyar, Hungarian</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>10,500.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,268.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>6,054.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,632.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>5,861.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>35,315.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>35: Uralic</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>100.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>377.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>477.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>36: Turkish</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,800.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,224.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,620.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,270.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>6,100.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>18,014.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>37: Other Altaic</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>400.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>561.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>759.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>1,720.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>38: Caucasian, Georgian, Avar</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>436.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>436.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>40: Dravidian</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,100.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,419.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>7,059.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>13,916.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>18,831.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>45,325.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>41: Kurukh</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>39.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>39.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>43: Chinese</TD>
+<TD BGCOLOR=#66ccff><STRONG>1.2</STRONG><BR><font size=-1><em>(1.1-1.3)</em></font><BR>88,600.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>2.2</STRONG><BR><font size=-1><em>(2.1-2.3)</em></font><BR>194,545.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>2.7</STRONG><BR><font size=-1><em>(2.6-2.8)</em></font><BR>256,006.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>3.4</STRONG><BR><font size=-1><em>(3.3-3.5)</em></font><BR>333,886.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>4.0</STRONG><BR><font size=-1><em>(3.9-4.1)</em></font><BR>401,703.0</TD>
+<TD><EM><STRONG>2.8</STRONG></EM><BR><font size=-1><em>(2.7-2.8)</em></font><BR><EM>1,274,740.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>44: Tibetan</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,500.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>234.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>53.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,011.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,455.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>4,253.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>45: Burmese, Lisu, Lolo</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>700.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>3,809.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,217.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>5,450.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,186.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>18,362.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>47: Thai, Siamese, Lao</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>9,800.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>21,710.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>26,240.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.3)</em></font><BR>27,850.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.3</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>26,295.0</TD>
+<TD><EM><STRONG>.2</STRONG></EM><BR><font size=-1><em>(0.2-0.3)</em></font><BR><EM>111,895.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>48: Japanese</TD>
+<TD BGCOLOR=#ff6666><STRONG>.8</STRONG><BR><font size=-1><em>(0.7-0.9)</em></font><BR>59,200.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.7</STRONG><BR><font size=-1><em>(0.7-0.8)</em></font><BR>63,141.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.6</STRONG><BR><font size=-1><em>(0.6-0.7)</em></font><BR>59,553.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.5</STRONG><BR><font size=-1><em>(0.5-0.6)</em></font><BR>52,735.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.5</STRONG><BR><font size=-1><em>(0.5-0.5)</em></font><BR>49,664.0</TD>
+<TD><EM><STRONG>.6</STRONG></EM><BR><font size=-1><em>(0.6-0.6)</em></font><BR><EM>284,293.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>49: Korean</TD>
+<TD BGCOLOR=#66ccff><STRONG>.7</STRONG><BR><font size=-1><em>(0.7-0.8)</em></font><BR>53,600.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>1.4</STRONG><BR><font size=-1><em>(1.4-1.5)</em></font><BR>125,840.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>1.8</STRONG><BR><font size=-1><em>(1.7-1.8)</em></font><BR>167,014.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>1.9</STRONG><BR><font size=-1><em>(1.9-2.0)</em></font><BR>191,070.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>1.8</STRONG><BR><font size=-1><em>(1.7-1.9)</em></font><BR>181,622.0</TD>
+<TD><EM><STRONG>1.6</STRONG></EM><BR><font size=-1><em>(1.5-1.6)</em></font><BR><EM>719,146.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>50: Vietnamese</TD>
+<TD BGCOLOR=#66ccff><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.4)</em></font><BR>23,800.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.6</STRONG><BR><font size=-1><em>(0.6-0.7)</em></font><BR>53,482.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.7</STRONG><BR><font size=-1><em>(0.7-0.8)</em></font><BR>68,984.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.9</STRONG><BR><font size=-1><em>(0.8-0.9)</em></font><BR>86,663.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.7</STRONG><BR><font size=-1><em>(0.6-0.7)</em></font><BR>69,346.0</TD>
+<TD><EM><STRONG>.7</STRONG></EM><BR><font size=-1><em>(0.6-0.7)</em></font><BR><EM>302,275.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>51: Other East&#x2F;Southeast Asian</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>5,600.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>22,958.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>22,853.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.3)</em></font><BR>28,708.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>24,833.0</TD>
+<TD><EM><STRONG>.2</STRONG></EM><BR><font size=-1><em>(0.2-0.2)</em></font><BR><EM>104,952.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>52: Indonesian</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,100.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>6,630.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>9,168.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>13,034.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>11,647.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>41,579.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>53: Other Malayan</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,400.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>11,531.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>21,630.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>16,844.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>790.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>52,195.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>54: Filipino, Tagalog</TD>
+<TD BGCOLOR=#66ccff><STRONG>1.0</STRONG><BR><font size=-1><em>(0.9-1.1)</em></font><BR>75,000.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>1.8</STRONG><BR><font size=-1><em>(1.7-1.9)</em></font><BR>155,155.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>2.2</STRONG><BR><font size=-1><em>(2.1-2.2)</em></font><BR>204,409.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>2.3</STRONG><BR><font size=-1><em>(2.2-2.4)</em></font><BR>222,248.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>2.3</STRONG><BR><font size=-1><em>(2.3-2.4)</em></font><BR>236,587.0</TD>
+<TD><EM><STRONG>2.0</STRONG></EM><BR><font size=-1><em>(1.9-2.0)</em></font><BR><EM>893,399.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>55: Micronesian, Polynesian</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>9,300.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>11,102.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>13,520.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>10,394.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>6,094.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>50,410.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>56: Hawaiian</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>500.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>442.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>916.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>299.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>195.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>2,352.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>57: Arabic</TD>
+<TD BGCOLOR=#66ccff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>16,600.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.3)</em></font><BR>25,532.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>42,621.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>41,498.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.4</STRONG><BR><font size=-1><em>(0.4-0.5)</em></font><BR>45,150.0</TD>
+<TD><EM><STRONG>.4</STRONG></EM><BR><font size=-1><em>(0.4-0.4)</em></font><BR><EM>171,401.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>58: Near East Arabic dialect</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>600.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,834.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,754.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,473.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,682.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>11,343.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>59: Hebrew, Israeli</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>9,400.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.2)</em></font><BR>17,719.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.2</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>22,359.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.3-0.3)</em></font><BR>29,413.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.3</STRONG><BR><font size=-1><em>(0.2-0.3)</em></font><BR>25,888.0</TD>
+<TD><EM><STRONG>.2</STRONG></EM><BR><font size=-1><em>(0.2-0.2)</em></font><BR><EM>104,779.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>60: Amharic, Ethiopian, etc.</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>400.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,391.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,259.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>8,463.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>6,969.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.1)</em></font><BR><EM>21,482.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>61: Hamitic</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>100.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>238.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>55.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>393.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>62: Other Afro-Asiatic languages</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,282.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>1,282.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>63: Sub-Saharan Africa</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>2,300.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>5,837.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>12,076.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>15,258.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.2</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>15,908.0</TD>
+<TD><EM><STRONG>.1</STRONG></EM><BR><font size=-1><em>(0.1-0.1)</em></font><BR><EM>51,379.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>64: African, n.s.</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>300.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>299.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>290.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>889.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>70: American Indian (all)</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.0-0.1)</em></font><BR>4,800.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>4,800.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>72: Algonquian</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>247.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>27.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>274.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>74: Athapascan</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>186.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>132.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>318.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>75: Navajo</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>260.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>92.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>273.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>220.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>845.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>82: Muskogean</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>81.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>81.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>83: Keres</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>109.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>176.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>285.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>84: Iroquoian</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>208.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>230.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>438.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>86: Shoshonean&#x2F;Hopi</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>237.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>237.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>87: Pima, Papago</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>91.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>277.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>368.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>89: Aztecan, Nahuatl, Uto-Aztecan</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>65.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,304.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>491.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>1,860.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>90: Tanoan languages</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>118.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>118.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>92: Mayan languages</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ccffff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,404.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.1)</em></font><BR>6,298.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>7,702.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>93: American Indian, n.s.</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>416.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>238.0</TD>
+<TD BGCOLOR=#ffcccc><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>215.0</TD>
+<TD BGCOLOR=#99ffff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>869.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>94: Native</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#ff9999><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>1,595.0</TD>
+<TD BGCOLOR=#ff6666><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>3,405.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>5,000.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TD ALIGN=left>96: Other or not reported</TD>
+<TD BGCOLOR=#ff6666><STRONG>.1</STRONG><BR><font size=-1><em>(0.1-0.2)</em></font><BR>10,700.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR>---<BR>.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>49.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>255.0</TD>
+<TD BGCOLOR=#66ccff><STRONG>.0</STRONG><BR><font size=-1><em>(0.0-0.0)</em></font><BR>881.0</TD>
+<TD><EM><STRONG>.0</STRONG></EM><BR><font size=-1><em>(0.0-0.0)</em></font><BR><EM>11,885.0</EM></TD>
+</TR>
+<TR ALIGN=right>
+<TH ALIGN=left scope=row><EM>COL TOTAL</EM></TH>
+<TD><EM><STRONG>100.0</STRONG></EM><BR><EM>---</EM><BR><EM>7,495,400.0</EM></TD>
+<TD><EM><STRONG>100.0</STRONG></EM><BR><EM>---</EM><BR><EM>8,808,735.0</EM></TD>
+<TD><EM><STRONG>100.0</STRONG></EM><BR><EM>---</EM><BR><EM>9,502,486.0</EM></TD>
+<TD><EM><STRONG>100.0</STRONG></EM><BR><EM>---</EM><BR><EM>9,828,277.0</EM></TD>
+<TD><EM><STRONG>100.0</STRONG></EM><BR><EM>---</EM><BR><EM>10,103,847.0</EM></TD>
+<TD><EM><STRONG>100.0</STRONG></EM><BR><EM>---</EM><BR><EM>45,738,745.0</EM></TD>
+</TR>
+</TABLE>
+</TD></TR>
+
+<!-- Color samples -->
+<TR><TD>
+<TABLE class="dflt">
+<TR>
+<TD ALIGN=left><STRONG><FONT size = -1>Color coding:</FONT></STRONG></TD>
+<TD ALIGN=center BGCOLOR=#66ccff><FONT size = -1>&lt;-2.0</FONT></TD>
+<TD ALIGN=center BGCOLOR=#99ffff><FONT size = -1>&lt;-1.0</FONT></TD>
+<TD ALIGN=center BGCOLOR=#ccffff><FONT size = -1>&lt;0.0</FONT></TD>
+<TD ALIGN=center BGCOLOR=#ffcccc><FONT size = -1>>0.0</FONT></TD>
+<TD ALIGN=center BGCOLOR=#ff9999><FONT size = -1>>1.0</FONT></TD>
+<TD ALIGN=center BGCOLOR=#ff6666><FONT size = -1>>2.0</FONT></TD>
+<TD><STRONG><FONT size = -1>Z</FONT></STRONG></TD>
+</TR>
+<TR>
+<TD ALIGN=left><STRONG><FONT size = -1>N in each cell:</FONT></STRONG></TD>
+<TD ALIGN=center COLSPAN=3><FONT size = -1>Smaller than expected</FONT></TD>
+<TD ALIGN=center COLSPAN=3><FONT size = -1>Larger than expected</FONT></TD>
+</TR>
+</TABLE>
+</TD></TR>
+<TR><TD>
+<img src="/sdaweb/charts?specfile=tmp8233169508910160174.cht" alt="chart illustrating table" />
+</TD></TR>
+<TR><TD>
+</TD></TR>
+<TR><TD>
+<TABLE class="dflt">
+<TR>
+<TH ALIGN=center BGCOLOR=#93BED5 COLSPAN=2>Allocation of cases (unweighted) </TH>
+</TR>
+<TR>
+<TD>Valid cases</TD>
+<TD ALIGN=right>452,590</TD>
+</TR>
+<TR>
+<TD>Cases excluded by filters or weight</TD>
+<TD ALIGN=right>68,006,190</TD>
+</TR>
+<TR>
+<TD><EM>Total cases</EM></TD>
+<TD ALIGN=right><EM>68,458,780</EM></TD>
+</TR>
+</TABLE>
+</TD></TR>
+
+<!-- Study Information -->
+<TR><TD>
+<TABLE class="dflt">
+<TR>
+<TH ALIGN=center BGCOLOR=#93BED5 COLSPAN=2>Datasets</TH>
+</TR>
+<TR>
+<TD ALIGN=left>1</TD>
+<TD ALIGN=left>/sda/data/all_usa_samples</TD>
+</TR>
+<TR>
+<TD ALIGN=left>2</TD>
+<TD ALIGN=left>/data/all_usa_samples/NEWVARS</TD>
+</TR>
+</TABLE>
+</TD></TR>
+
+<!-- End of master table -->
+</TABLE>
+<EM>CSM, UC Berkeley</EM>
+<BR>
+</BODY>
+</HTML>
