@@ -18,6 +18,13 @@ head(data)
 ```
 
 ```{r}
+data %>% 
+  count(RACE) %>% 
+  view()
+```
+
+
+```{r}
 alllacounty = data %>%
   filter(COUNTYFIP == 37) %>% 
   group_by(PUMA) %>% 
@@ -36,6 +43,8 @@ calcslacounty = full_join(
 ) %>% 
   mutate(indians = replace_na(indians, 0)) %>% 
   mutate(pctindians = indians/total)
+
+calcslacounty
 ```
 
 ```{r}
@@ -49,39 +58,70 @@ library(srvyr)
 ```
 
 ```{r}
-svy = as_survey(
-  data,
-  weight = PERWT,
-  repweights = matches("REPWTP[0-9]+"),
-  type = "Fay",
-  rho = 0.5,
-  mse = TRUE
-)
+svy = data %>% 
+  zap_labels() %>% 
+  mutate(PUMA = as.character(PUMA) %>% str_pad(width = 4, side = 'left', pad = '0')) %>% 
+  as_survey(
+    weight = PERWT,
+    repweights = matches("REPWTP[0-9]+"),
+    type = "Fay",
+    rho = 0.5,
+    mse = TRUE
+  )
 ```
 
 ```{r}
-laindianssvy = svy %>% 
+svy
+```
+
+```{r}
+indians.calcs = svy %>% 
   filter(COUNTYFIP == 37) %>% 
   filter(RACED == 610) %>% 
   filter(HISPAN == 0) %>% 
-  group_by(PUMA) %>% 
-  summarise(total = survey_total()) %>% 
-  mutate(pct = total / sum(total)) %>%
-  mutate(
-    estlo = total - total_se,
-    esthi = total + total_se
-  ) %>%
-  mutate(estlo = if_else(estlo < 0, 0, estlo)) %>%
-  mutate(
-    pct_lo = pct - (estlo / sum(total)),
-    pct_hi = pct + (esthi / sum(total)),
-  ) %>%
-  mutate(
+  group_by(PUMA) %>%
+  summarise(total = survey_total())
+
+indians.calcs
+```
+
+```{r}
+indians.calcs %>% 
+  transmute(
+    puma = PUMA,
     pct = round(pct * 100, 1),
-    pct_hi = round(pct_hi * 100, 1),
     pct_lo = round(pct_lo * 100, 1),
-  ) %>%
-  select(PUMA, total, pct, pct_lo, pct_hi) %>%
-  arrange(PUMA)
+    pct_hi = round(pct_hi * 100, 1),
+    total
+  ) %>% 
+  view()
+```
+
+
+
+```{r}
+# laindianssvy = svy %>% 
+#   filter(COUNTYFIP == 37) %>% 
+#   filter(RACED == 610) %>% 
+#   filter(HISPAN == 0) %>% 
+#   group_by(PUMA) %>%
+#   summarize(total = survey_total()) %>% 
+#   mutate(pct = total / sum(total)) %>%
+#   mutate(
+#     estlo = total - total_se,
+#     esthi = total + total_se
+#   ) %>%
+#   mutate(estlo = if_else(estlo < 0, 0, estlo)) %>%
+#   mutate(
+#     pct_lo = pct - (estlo / sum(total)),
+#     pct_hi = pct + (esthi / sum(total)),
+#   ) %>%
+#   mutate(
+#     pct = round(pct * 100, 1),
+#     pct_hi = round(pct_hi * 100, 1),
+#     pct_lo = round(pct_lo * 100, 1),
+#   ) %>%
+#   select(PUMA, total, pct, pct_lo, pct_hi) %>%
+#   arrange(PUMA)
 ```
 
