@@ -1,0 +1,130 @@
+---
+title: "Analyzing L.A. County's changing languages in Census microdata"
+output: github_document
+---
+
+```{r}
+library(ipumsr)
+library(tidyverse)
+```
+
+The IPUMS-USA extract comes with two files:
+
+1. A fixed-width data file in a compressed folder
+2. A data codebook in an XML format, which describes the data based on the [Data Documentation Initative](https://ddialliance.org/), or "DDI"
+
+```{r}
+ddi = read_ipums_ddi('data/usa_00009.xml')
+data = read_ipums_micro(ddi)
+```
+
+# The codebook
+
+The DDI details the variables in the extract.
+
+```{r}
+info.variables = ddi$var_info
+info.variables
+```
+
+The key column in this extract is LANGUAGED (the more detailed counterpart of LANGUAGE). More info about the variable is available on [IPUMS-USA](https://usa.ipums.org/usa-action/variables/LANGUAGE).
+
+The codebook provides the values for every LANGUAGED code.
+
+```{r}
+info.variables %>% 
+  filter(var_name == 'LANGUAGE') %>% 
+  `[[`('val_labels')
+```
+
+The LANGUAGED table has a lot of detail. Almost too much detail. For example, English (0100) is further subdivided into Jamaican Creole (0110), Krio (0120), Hawaiian Pidgin (0130) and more. For simplicity's sake, we'll fold up the subdivisions into the major groups. This should leave about 90 languages, according to the [LANGUAGED definition](https://usa.ipums.org/usa-action/variables/LANGUAGE#codes_section) on the IPUMS site.
+
+```{r}
+language.codes.raw = info.variables %>%
+  filter(var_name == 'LANGUAGED') %>% 
+  `[[`('val_labels') %>% 
+  `[[`(1) %>% 
+  # pad value to create four digit code
+  mutate(val = str_pad(val, width = 4, side = 'left', pad = '0'))
+
+language.codes = language.codes.raw %>% 
+  # trim four digit codes to just the first two digits, pad the end
+  mutate(langcode = (val %>% str_sub(end = 2) %>% str_pad(width = 4, side = 'right', pad = '0'))) %>% 
+  # merge this with itself to get labels for the group
+  left_join(language.codes %>% select(langcode = val, language = lbl), by = 'langcode')
+
+language.codes
+```
+
+```{r}
+language.codes %>%
+  distinct(langcode, language)
+```
+
+
+
+# The data
+
+All of the data in the extract. Most of these come preselected with any IPUMS extract.
+
+```{r}
+data %>% head()
+```
+
+The data is already filtered down to California. Filter it down again to just L.A. County, then keep only the relevant columns.
+
+```{r}
+la.data = data %>% 
+  filter(COUNTYFIP == 37) %>% 
+  select(YEAR, LANGUAGED, PERWT)
+
+la.data %>% head()
+```
+
+[PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) is the approxmiation of how many people this line of data represents. In this case, it would be the approximate amount of people speaking that language. It needs to be aggregated and summed to get total counts for the language.
+
+```{r}
+la.data.agg = la.data %>% 
+  group_by(YEAR, LANGUAGED) %>% 
+  summarise(PERWT = sum(PERWT))
+
+la.data.agg %>% head()
+```
+
+Reformat the data, separating the labels from the code, plus add a column for the percent of the population speaking that language in each year.
+
+```{r}
+la.languages = la.data.agg %>% 
+  group_by(YEAR) %>% 
+  mutate(percent = PERWT / sum(PERWT)) %>% 
+  ungroup(YEAR) %>% 
+  transmute(
+    year = YEAR,
+    langcode = zap_labels(LANGUAGED),
+    language = as_factor(LANGUAGED),
+    total = PERWT,
+    percent
+  )
+
+la.languages %>% head()
+```
+
+What were the top 10 languages spoken in 1980?
+
+```{r}
+la.languages %>% 
+  filter(langcode != 0) %>% 
+  filter(year == 1980) %>% 
+  arrange(-total) %>% 
+  head(10)
+```
+
+What were the top 10 languages spoken in 2018?
+
+```{r}
+la.languages %>% 
+  filter(langcode != 0) %>% 
+  filter(year == 2018) %>% 
+  arrange(-total) %>% 
+  head(10)
+```
