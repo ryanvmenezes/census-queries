@@ -49,11 +49,6 @@ The DDI details the variables in the extract.
 
 ``` r
 info.variables = ddi$var_info
-```
-
-Details of the extract
-
-``` r
 info.variables
 ```
 
@@ -76,43 +71,31 @@ info.variables
     ## 14 LANGUAG… Language… LANGUAG… <tibble [… <NA>          89    92         0
     ## # … with 2 more variables: var_type <chr>, rectypes <lgl>
 
-All the variables included.
-
-``` r
-info.variables$var_name
-```
-
-    ##  [1] "YEAR"      "SAMPLE"    "SERIAL"    "CBSERIAL"  "HHWT"     
-    ##  [6] "CLUSTER"   "STATEFIP"  "COUNTYFIP" "STRATA"    "GQ"       
-    ## [11] "PERNUM"    "PERWT"     "LANGUAGE"  "LANGUAGED"
-
-The key column in this extract is LANGUAGED (the more detailed
-counterpart of LANGUAGE). More info about the variable is available on
-[IPUMS-USA](https://usa.ipums.org/usa-action/variables/LANGUAGE).
-
-The codebook provides all the value for every LANGUAGED code.
+The key column in this extract is
+[LANGUAGE](https://usa.ipums.org/usa-action/variables/LANGUAGE). The
+codebook provides the values for every LANGUAGED code.
 
 ``` r
 info.variables %>% 
-  filter(var_name == 'LANGUAGED') %>% 
+  filter(var_name == 'LANGUAGE') %>% 
   `[[`('val_labels')
 ```
 
     ## [[1]]
-    ## # A tibble: 495 x 2
-    ##      val lbl                                 
-    ##    <dbl> <chr>                               
-    ##  1     0 N/A or blank                        
-    ##  2   100 English                             
-    ##  3   110 Jamaican Creole                     
-    ##  4   120 Krio, Pidgin Krio                   
-    ##  5   130 Hawaiian Pidgin                     
-    ##  6   140 Pidgin                              
-    ##  7   150 Gullah, Geechee                     
-    ##  8   160 Saramacca                           
-    ##  9   170 Other English-based Creole languages
-    ## 10   200 German                              
-    ## # … with 485 more rows
+    ## # A tibble: 92 x 2
+    ##      val lbl            
+    ##    <dbl> <chr>          
+    ##  1     0 N/A or blank   
+    ##  2     1 English        
+    ##  3     2 German         
+    ##  4     3 Yiddish, Jewish
+    ##  5     4 Dutch          
+    ##  6     5 Swedish        
+    ##  7     6 Danish         
+    ##  8     7 Norwegian      
+    ##  9     8 Icelandic      
+    ## 10     9 Scandinavian   
+    ## # … with 82 more rows
 
 # The data
 
@@ -135,25 +118,26 @@ data %>% head()
     ## # … with 6 more variables: STRATA <dbl>, GQ <int+lbl>, PERNUM <dbl>,
     ## #   PERWT <dbl>, LANGUAGE <int+lbl>, LANGUAGED <int+lbl>
 
-Filtering down to L.A. and kepeing the relevant columns
+The data is already filtered down to California. Filter it down again to
+just L.A. County, then keep only the relevant columns.
 
 ``` r
 la.data = data %>% 
   filter(COUNTYFIP == 37) %>% 
-  select(YEAR, LANGUAGE, LANGUAGED, PERWT)
+  select(YEAR, LANGUAGE, PERWT)
 
 la.data %>% head()
 ```
 
-    ## # A tibble: 6 x 4
-    ##    YEAR    LANGUAGE     LANGUAGED PERWT
-    ##   <int>   <int+lbl>     <int+lbl> <dbl>
-    ## 1  1980 1 [English] 100 [English]    20
-    ## 2  1980 1 [English] 100 [English]    20
-    ## 3  1980 1 [English] 100 [English]    20
-    ## 4  1980 1 [English] 100 [English]    20
-    ## 5  1980 1 [English] 100 [English]    20
-    ## 6  1980 1 [English] 100 [English]    20
+    ## # A tibble: 6 x 3
+    ##    YEAR    LANGUAGE PERWT
+    ##   <int>   <int+lbl> <dbl>
+    ## 1  1980 1 [English]    20
+    ## 2  1980 1 [English]    20
+    ## 3  1980 1 [English]    20
+    ## 4  1980 1 [English]    20
+    ## 5  1980 1 [English]    20
+    ## 6  1980 1 [English]    20
 
 [PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section)
 is the approxmiation of how many people this line of data represents. In
@@ -163,7 +147,7 @@ the language.
 
 ``` r
 la.data.agg = la.data %>% 
-  group_by(YEAR, LANGUAGED) %>% 
+  group_by(YEAR, LANGUAGE) %>% 
   summarise(PERWT = sum(PERWT))
 
 la.data.agg %>% head()
@@ -171,14 +155,14 @@ la.data.agg %>% head()
 
     ## # A tibble: 6 x 3
     ## # Groups:   YEAR [1]
-    ##    YEAR               LANGUAGED   PERWT
-    ##   <int>               <int+lbl>   <dbl>
-    ## 1  1980   0 [N/A or blank]       346500
-    ## 2  1980 100 [English]           4888160
-    ## 3  1980 110 [Jamaican Creole]       100
-    ## 4  1980 120 [Krio, Pidgin Krio]      60
-    ## 5  1980 140 [Pidgin]                180
-    ## 6  1980 150 [Gullah, Geechee]       420
+    ##    YEAR            LANGUAGE   PERWT
+    ##   <int>           <int+lbl>   <dbl>
+    ## 1  1980 0 [N/A or blank]     346500
+    ## 2  1980 1 [English]         4888960
+    ## 3  1980 2 [German]            47660
+    ## 4  1980 3 [Yiddish, Jewish]   18900
+    ## 5  1980 4 [Dutch]             13560
+    ## 6  1980 5 [Swedish]            3780
 
 Reformat the data, separating the labels from the code, plus add a
 column for the percent of the population speaking that language in each
@@ -191,8 +175,8 @@ la.languages = la.data.agg %>%
   ungroup(YEAR) %>% 
   transmute(
     year = YEAR,
-    langcode = zap_labels(LANGUAGED),
-    language = as_factor(LANGUAGED),
+    langcode = zap_labels(LANGUAGE),
+    language = as_factor(LANGUAGE),
     total = PERWT,
     percent
   )
@@ -201,11 +185,126 @@ la.languages %>% head()
 ```
 
     ## # A tibble: 6 x 5
-    ##    year langcode language            total    percent
-    ##   <int>    <int> <fct>               <dbl>      <dbl>
-    ## 1  1980        0 N/A or blank       346500 0.0462    
-    ## 2  1980      100 English           4888160 0.652     
-    ## 3  1980      110 Jamaican Creole       100 0.0000133 
-    ## 4  1980      120 Krio, Pidgin Krio      60 0.00000801
-    ## 5  1980      140 Pidgin                180 0.0000240 
-    ## 6  1980      150 Gullah, Geechee       420 0.0000560
+    ##    year langcode language          total  percent
+    ##   <int>    <int> <fct>             <dbl>    <dbl>
+    ## 1  1980        0 N/A or blank     346500 0.0462  
+    ## 2  1980        1 English         4888960 0.652   
+    ## 3  1980        2 German            47660 0.00636 
+    ## 4  1980        3 Yiddish, Jewish   18900 0.00252 
+    ## 5  1980        4 Dutch             13560 0.00181 
+    ## 6  1980        5 Swedish            3780 0.000504
+
+What were the top 10 languages spoken in 1980?
+
+``` r
+la.languages %>% 
+  filter(langcode != 0) %>% 
+  filter(year == 1980) %>% 
+  arrange(-total) %>% 
+  head(10)
+```
+
+    ## # A tibble: 10 x 5
+    ##     year langcode language            total percent
+    ##    <int>    <int> <fct>               <dbl>   <dbl>
+    ##  1  1980        1 English           4888960 0.652  
+    ##  2  1980       12 Spanish           1591000 0.212  
+    ##  3  1980       43 Chinese             77920 0.0104 
+    ##  4  1980       54 Filipino, Tagalog   68700 0.00917
+    ##  5  1980       48 Japanese            58280 0.00778
+    ##  6  1980       49 Korean              55000 0.00734
+    ##  7  1980        2 German              47660 0.00636
+    ##  8  1980       11 French              38800 0.00518
+    ##  9  1980       28 Armenian            38600 0.00515
+    ## 10  1980       10 Italian             34940 0.00466
+
+What were the top 10 languages spoken in 2018?
+
+``` r
+la.languages %>% 
+  filter(langcode != 0) %>% 
+  filter(year == 2018) %>% 
+  arrange(-total) %>% 
+  head(10)
+```
+
+    ## # A tibble: 10 x 5
+    ##     year langcode language                  total percent
+    ##    <int>    <int> <fct>                     <dbl>   <dbl>
+    ##  1  2018        1 English                 4108477 0.407  
+    ##  2  2018       12 Spanish                 3741860 0.370  
+    ##  3  2018       43 Chinese                  401703 0.0398 
+    ##  4  2018       54 Filipino, Tagalog        236587 0.0234 
+    ##  5  2018       49 Korean                   181622 0.0180 
+    ##  6  2018       28 Armenian                 169458 0.0168 
+    ##  7  2018       31 Hindi and related         79249 0.00784
+    ##  8  2018       29 Persian, Iranian, Farsi   72613 0.00719
+    ##  9  2018       50 Vietnamese                69346 0.00686
+    ## 10  2018       48 Japanese                  49664 0.00492
+
+How have English and Spanish, far and away the top languages, changed
+over time?
+
+``` r
+la.languages %>% 
+  filter(language %in% c('English', 'Spanish')) %>% 
+  ggplot(aes(year, percent, color = language)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+```
+
+![](analysis_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+
+How about the other languages?
+
+Start by keeping any language that has been in the top 10 for a
+particular year.
+
+``` r
+top.10.yearly = la.languages %>% 
+  filter(langcode != 0) %>% 
+  group_by(year) %>% 
+  mutate(rankinyear = rank(-total)) %>% 
+  ungroup(year) %>% 
+  filter(rankinyear <= 10)
+
+top.10.yearly %>% head()
+```
+
+    ## # A tibble: 6 x 6
+    ##    year langcode language   total percent rankinyear
+    ##   <int>    <int> <fct>      <dbl>   <dbl>      <dbl>
+    ## 1  1980        1 English  4888960 0.652            1
+    ## 2  1980        2 German     47660 0.00636          7
+    ## 3  1980       10 Italian    34940 0.00466         10
+    ## 4  1980       11 French     38800 0.00518          8
+    ## 5  1980       12 Spanish  1591000 0.212            2
+    ## 6  1980       28 Armenian   38600 0.00515          9
+
+``` r
+unique(top.10.yearly$language)
+```
+
+    ##  [1] English                 German                 
+    ##  [3] Italian                 French                 
+    ##  [5] Spanish                 Armenian               
+    ##  [7] Chinese                 Japanese               
+    ##  [9] Korean                  Filipino, Tagalog      
+    ## [11] Persian, Iranian, Farsi Vietnamese             
+    ## [13] Hindi and related      
+    ## 92 Levels: N/A or blank English German Yiddish, Jewish Dutch ... Other or not reported
+
+``` r
+top.10.yearly %>%
+  filter(!language %in% c('English', 'Spanish')) %>% 
+  arrange(-year, -total) %>% 
+  # control ordering
+  mutate(language = language %>% as.character() %>% fct_inorder() %>% fct_rev()) %>% 
+  ggplot(aes(year, percent, fill = language)) +
+  geom_bar(stat = 'identity', position = 'dodge') +
+  scale_fill_brewer(palette = "Paired", name = 'Language') +
+  theme_minimal()
+```
+
+![](analysis_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->

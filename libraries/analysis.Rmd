@@ -14,7 +14,7 @@ The IPUMS-USA extract comes with two files:
 2. A data codebook in an XML format, which describes the data based on the [Data Documentation Initative](https://ddialliance.org/), or "DDI"
 
 ```{r}
-ddi = read_ipums_ddi('data/usa_00009.xml')
+ddi = read_ipums_ddi('data/usa_00010.xml')
 data = read_ipums_micro(ddi)
 ```
 
@@ -27,41 +27,13 @@ info.variables = ddi$var_info
 info.variables
 ```
 
-The key column in this extract is LANGUAGED (the more detailed counterpart of LANGUAGE). More info about the variable is available on [IPUMS-USA](https://usa.ipums.org/usa-action/variables/LANGUAGE).
-
-The codebook provides the values for every LANGUAGED code.
+The key column in this extract is [LANGUAGE](https://usa.ipums.org/usa-action/variables/LANGUAGE). The codebook provides the values for every LANGUAGED code.
 
 ```{r}
 info.variables %>% 
   filter(var_name == 'LANGUAGE') %>% 
   `[[`('val_labels')
 ```
-
-The LANGUAGED table has a lot of detail. Almost too much detail. For example, English (0100) is further subdivided into Jamaican Creole (0110), Krio (0120), Hawaiian Pidgin (0130) and more. For simplicity's sake, we'll fold up the subdivisions into the major groups. This should leave about 90 languages, according to the [LANGUAGED definition](https://usa.ipums.org/usa-action/variables/LANGUAGE#codes_section) on the IPUMS site.
-
-```{r}
-language.codes.raw = info.variables %>%
-  filter(var_name == 'LANGUAGED') %>% 
-  `[[`('val_labels') %>% 
-  `[[`(1) %>% 
-  # pad value to create four digit code
-  mutate(val = str_pad(val, width = 4, side = 'left', pad = '0'))
-
-language.codes = language.codes.raw %>% 
-  # trim four digit codes to just the first two digits, pad the end
-  mutate(langcode = (val %>% str_sub(end = 2) %>% str_pad(width = 4, side = 'right', pad = '0'))) %>% 
-  # merge this with itself to get labels for the group
-  left_join(language.codes %>% select(langcode = val, language = lbl), by = 'langcode')
-
-language.codes
-```
-
-```{r}
-language.codes %>%
-  distinct(langcode, language)
-```
-
-
 
 # The data
 
@@ -76,7 +48,7 @@ The data is already filtered down to California. Filter it down again to just L.
 ```{r}
 la.data = data %>% 
   filter(COUNTYFIP == 37) %>% 
-  select(YEAR, LANGUAGED, PERWT)
+  select(YEAR, LANGUAGE, PERWT)
 
 la.data %>% head()
 ```
@@ -85,7 +57,7 @@ la.data %>% head()
 
 ```{r}
 la.data.agg = la.data %>% 
-  group_by(YEAR, LANGUAGED) %>% 
+  group_by(YEAR, LANGUAGE) %>% 
   summarise(PERWT = sum(PERWT))
 
 la.data.agg %>% head()
@@ -100,8 +72,8 @@ la.languages = la.data.agg %>%
   ungroup(YEAR) %>% 
   transmute(
     year = YEAR,
-    langcode = zap_labels(LANGUAGED),
-    language = as_factor(LANGUAGED),
+    langcode = zap_labels(LANGUAGE),
+    language = as_factor(LANGUAGE),
     total = PERWT,
     percent
   )
@@ -128,3 +100,47 @@ la.languages %>%
   arrange(-total) %>% 
   head(10)
 ```
+
+How have English and Spanish, far and away the top languages, changed over time?
+
+```{r}
+la.languages %>% 
+  filter(language %in% c('English', 'Spanish')) %>% 
+  ggplot(aes(year, percent, color = language)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+```
+
+How about the other languages?
+
+Start by keeping any language that has been in the top 10 for a particular year.
+
+```{r}
+top.10.yearly = la.languages %>% 
+  filter(langcode != 0) %>% 
+  group_by(year) %>% 
+  mutate(rankinyear = rank(-total)) %>% 
+  ungroup(year) %>% 
+  filter(rankinyear <= 10)
+
+top.10.yearly %>% head()
+```
+
+```{r}
+unique(top.10.yearly$language)
+```
+
+```{r}
+top.10.yearly %>%
+  filter(!language %in% c('English', 'Spanish')) %>% 
+  arrange(-year, -total) %>% 
+  # control ordering
+  mutate(language = language %>% as.character() %>% fct_inorder() %>% fct_rev()) %>% 
+  ggplot(aes(year, percent, fill = language)) +
+  geom_bar(stat = 'identity', position = 'dodge') +
+  scale_fill_brewer(palette = "Paired", name = 'Language') +
+  theme_minimal()
+  
+```
+
