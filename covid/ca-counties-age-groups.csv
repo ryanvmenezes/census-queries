@@ -1,0 +1,175 @@
+NAME,age.group,pop,pop.pct
+"Lake County, California",age.0.17,13290,0.2071771528340712
+"Lake County, California",age.18.64,36917,0.575497287522604
+"Lake County, California",age.65.99,13941,0.2173255596433248
+"Mariposa County, California",age.0.17,2865,0.16334093500570127
+"Mariposa County, California",age.18.64,9985,0.5692702394526796
+"Mariposa County, California",age.65.99,4690,0.26738882554161914
+"Yuba County, California",age.0.17,20874,0.27650245718146055
+"Yuba County, California",age.18.64,45544,0.6032877220404541
+"Yuba County, California",age.65.99,9075,0.12020982077808538
+"Contra Costa County, California",age.0.17,261300,0.23057638802485247
+"Contra Costa County, California",age.18.64,702165,0.6196045522291257
+"Contra Costa County, California",age.65.99,169782,0.14981905974602183
+"Lassen County, California",age.0.17,4926,0.15796055796055797
+"Lassen County, California",age.18.64,22102,0.7087381754048421
+"Lassen County, California",age.65.99,4157,0.13330126663459996
+"Santa Barbara County, California",age.0.17,99117,0.22336829390315907
+"Santa Barbara County, California",age.18.64,279846,0.6306559275969152
+"Santa Barbara County, California",age.65.99,64775,0.14597577849992563
+"Sonoma County, California",age.0.17,100818,0.2011062860425639
+"Sonoma County, California",age.18.64,309402,0.6171783522202519
+"Sonoma County, California",age.65.99,91097,0.18171536173718425
+"Imperial County, California",age.0.17,51676,0.2867447951347272
+"Imperial County, California",age.18.64,106094,0.5887046655124961
+"Imperial County, California",age.65.99,22446,0.12455053935277667
+"Mono County, California",age.0.17,2689,0.18971356003950895
+"Mono County, California",age.18.64,9455,0.667066459714971
+"Mono County, California",age.65.99,2030,0.14321998024551996
+"Alameda County, California",age.0.17,344513,0.20959603333941718
+"Alameda County, California",age.18.64,1083270,0.6590436210987406
+"Alameda County, California",age.65.99,215917,0.13136034556184217
+"Sacramento County, California",age.0.17,362761,0.24023541363277248
+"Sacramento County, California",age.18.64,945055,0.625854705524353
+"Sacramento County, California",age.65.99,202207,0.13390988084287458
+"Napa County, California",age.0.17,29894,0.21272326193695296
+"Napa County, California",age.18.64,85276,0.606817049740269
+"Napa County, California",age.65.99,25360,0.18045968832277806
+"Monterey County, California",age.0.17,114125,0.2634391475767061
+"Monterey County, California",age.18.64,263572,0.6084134326842285
+"Monterey County, California",age.65.99,55515,0.1281474197390654
+"Sierra County, California",age.0.17,441,0.15051194539249146
+"Sierra County, California",age.18.64,1636,0.5583617747440273
+"Sierra County, California",age.65.99,853,0.2911262798634812
+"San Diego County, California",age.0.17,726344,0.21991544834389143
+"San Diego County, California",age.18.64,2136894,0.6469882067909579
+"San Diego County, California",age.65.99,439595,0.13309634486515062
+"Yolo County, California",age.0.17,45919,0.21359959437521223
+"Yolo County, California",age.18.64,143617,0.6680575131293115
+"Yolo County, California",age.65.99,25441,0.11834289249547626
+"Humboldt County, California",age.0.17,26259,0.19341081845501149
+"Humboldt County, California",age.18.64,86862,0.639782570266926
+"Humboldt County, California",age.65.99,22647,0.16680661127806257
+"Alpine County, California",age.0.17,239,0.20855148342059338
+"Alpine County, California",age.18.64,614,0.5357766143106457
+"Alpine County, California",age.65.99,293,0.2556719022687609
+"Mendocino County, California",age.0.17,18891,0.2160897714534099
+"Mendocino County, California",age.18.64,50686,0.5797854087071904
+"Mendocino County, California",age.65.99,17845,0.2041248198393997
+"Santa Cruz County, California",age.0.17,53761,0.19637645425821415
+"Santa Cruz County, California",age.18.64,179003,0.6538564096944459
+"Santa Cruz County, California",age.65.99,41001,0.14976713604733988
+"Los Angeles County, California",age.0.17,2246521,0.22247072999822143
+"Los Angeles County, California",age.18.64,6552254,0.648863166876146
+"Los Angeles County, California",age.65.99,1299277,0.12866610312563254
+"Riverside County, California",age.0.17,613808,0.2575469330999301
+"Riverside County, California",age.18.64,1440869,0.604572426473365
+"Riverside County, California",age.65.99,328609,0.13788064042670498
+"Santa Clara County, California",age.0.17,432684,0.22509832483612527
+"Santa Clara County, California",age.18.64,1242608,0.646450941629383
+"Santa Clara County, California",age.65.99,246908,0.12845073353449174
+"Marin County, California",age.0.17,52908,0.20326168385869878
+"Marin County, California",age.18.64,152762,0.58688027046236
+"Marin County, California",age.65.99,54625,0.2098580456789412
+"Siskiyou County, California",age.0.17,8797,0.20204409738171797
+"Siskiyou County, California",age.18.64,24280,0.5576481396417088
+"Siskiyou County, California",age.65.99,10463,0.24030776297657327
+"Shasta County, California",age.0.17,38673,0.21594773431610687
+"Shasta County, California",age.18.64,104791,0.58514671803892
+"Shasta County, California",age.65.99,35621,0.19890554764497306
+"Del Norte County, California",age.0.17,5954,0.21710910151691948
+"Del Norte County, California",age.18.64,16885,0.6157015752625438
+"Del Norte County, California",age.65.99,4585,0.16718932322053676
+"San Luis Obispo County, California",age.0.17,50492,0.17939635110408414
+"San Luis Obispo County, California",age.18.64,178205,0.6331562772023946
+"San Luis Obispo County, California",age.65.99,52758,0.18744737169352116
+"Glenn County, California",age.0.17,7470,0.26777072803527263
+"Glenn County, California",age.18.64,16127,0.5780908341398717
+"Glenn County, California",age.65.99,4300,0.15413843782485573
+"Butte County, California",age.0.17,45658,0.20107013101398216
+"Butte County, California",age.18.64,141198,0.6218121765936364
+"Butte County, California",age.65.99,40219,0.17711769239238137
+"Plumas County, California",age.0.17,3063,0.16380555109898925
+"Plumas County, California",age.18.64,10648,0.5694422161612921
+"Plumas County, California",age.65.99,4988,0.2667522327397187
+"Kern County, California",age.0.17,257750,0.2918850850401958
+"Kern County, California",age.18.64,533298,0.6039252457100537
+"Kern County, California",age.65.99,92005,0.10418966924975058
+"Orange County, California",age.0.17,711188,0.22476203960454866
+"Orange County, California",age.18.64,2012506,0.6360272575976982
+"Orange County, California",age.65.99,440488,0.1392107027977531
+"Calaveras County, California",age.0.17,7768,0.17172543384547365
+"Calaveras County, California",age.18.64,25253,0.5582624074278767
+"Calaveras County, California",age.65.99,12214,0.27001215872664974
+"Sutter County, California",age.0.17,25116,0.2619742990654206
+"Sutter County, California",age.18.64,56528,0.5896194926568759
+"Sutter County, California",age.65.99,14228,0.1484062082777036
+"San Mateo County, California",age.0.17,161248,0.21052439175648063
+"San Mateo County, California",age.18.64,486820,0.6355891818496348
+"San Mateo County, California",age.65.99,117867,0.1538864263938846
+"Tuolumne County, California",age.0.17,9013,0.16711785211006452
+"Tuolumne County, California",age.18.64,31568,0.5853296744048061
+"Tuolumne County, California",age.65.99,13351,0.24755247348512943
+"San Joaquin County, California",age.0.17,201506,0.2752017175353586
+"San Joaquin County, California",age.18.64,441245,0.60261918679289606
+"San Joaquin County, California",age.65.99,89461,0.12217909567174534
+"Amador County, California",age.0.17,5822,0.15390309022178753
+"Amador County, California",age.18.64,22055,0.5830183192788602
+"Amador County, California",age.65.99,9952,0.26307859049935234
+"Merced County, California",age.0.17,80062,0.29754529406299357
+"Merced County, California",age.18.64,159693,0.593488804236737
+"Merced County, California",age.65.99,29320,0.10896590170026944
+"Modoc County, California",age.0.17,1733,0.1938912508391139
+"Modoc County, California",age.18.64,4912,0.5495636607742225
+"Modoc County, California",age.65.99,2293,0.2565450883866637
+"Inyo County, California",age.0.17,3635,0.20099529997235277
+"Inyo County, California",age.18.64,10302,0.5696433508432402
+"Inyo County, California",age.65.99,4148,0.22936134918440695
+"Stanislaus County, California",age.0.17,146907,0.2724026100452252
+"Stanislaus County, California",age.18.64,324624,0.6019347266183449
+"Stanislaus County, California",age.65.99,67770,0.12566266333642995
+"Tehama County, California",age.0.17,15178,0.2395026273018478
+"Tehama County, California",age.18.64,36230,0.5716945702428479
+"Tehama County, California",age.65.99,11965,0.18880280245530431
+"San Benito County, California",age.0.17,15603,0.26260603204524036
+"San Benito County, California",age.18.64,36619,0.6163154705803151
+"San Benito County, California",age.65.99,7194,0.1210784973744446
+"El Dorado County, California",age.0.17,38016,0.20366332549380964
+"El Dorado County, California",age.18.64,111894,0.5994503404567638
+"El Dorado County, California",age.65.99,36751,0.1968863340494265
+"San Francisco County, California",age.0.17,116897,0.13435757272046012
+"San Francisco County, California",age.18.64,621709,0.7145719067081665
+"San Francisco County, California",age.65.99,131438,0.1510705205713734
+"Tulare County, California",age.0.17,143528,0.31169417799368915
+"Tulare County, California",age.18.64,266558,0.578873646240746
+"Tulare County, California",age.65.99,50391,0.10943217576556484
+"Nevada County, California",age.0.17,17189,0.17346506276995116
+"Nevada County, California",age.18.64,56726,0.5724579178944819
+"Nevada County, California",age.65.99,25177,0.2540770193355669
+"Madera County, California",age.0.17,42814,0.276196189996968
+"Madera County, California",age.18.64,91402,0.5896408688303562
+"Madera County, California",age.65.99,20797,0.13416294117267585
+"Trinity County, California",age.0.17,2172,0.16886953817446743
+"Trinity County, California",age.18.64,7301,0.5676411133571762
+"Trinity County, California",age.65.99,3389,0.2634893484683564
+"San Bernardino County, California",age.0.17,572852,0.2682628606269607
+"San Bernardino County, California",age.18.64,1329218,0.6224641322310953
+"San Bernardino County, California",age.65.99,233343,0.10927300714194398
+"Placer County, California",age.0.17,85719,0.22553061616461928
+"Placer County, California",age.18.64,223259,0.5874046574773006
+"Placer County, California",age.65.99,71099,0.18706472635808008
+"Solano County, California",age.0.17,98813,0.22532779969443367
+"Solano County, California",age.18.64,275327,0.6278407406562835
+"Solano County, California",age.65.99,64390,0.14683145964928282
+"Colusa County, California",age.0.17,5883,0.27408684308609765
+"Colusa County, California",age.18.64,12615,0.5877282892284756
+"Colusa County, California",age.65.99,2966,0.13818486768542676
+"Kings County, California",age.0.17,40935,0.27276361819090456
+"Kings County, California",age.18.64,94573,0.6301715808762286
+"Kings County, California",age.65.99,14567,0.0970648009328669
+"Fresno County, California",age.0.17,279979,0.28623904797930744
+"Fresno County, California",age.18.64,583713,0.5967642337930541
+"Fresno County, California",age.65.99,114438,0.11699671822763845
+"Ventura County, California",age.0.17,199599,0.23534509593072614
+"Ventura County, California",age.18.64,525078,0.6191139849453846
+"Ventura County, California",age.65.99,123435,0.1455409191238893
