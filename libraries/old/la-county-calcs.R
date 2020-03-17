@@ -1,6 +1,6 @@
 library(tidyverse)
 
-lang.raw = read_csv('languages-la-county.csv')
+lang.raw = read_csv('old/languages-la-county.csv')
 lang.raw
 
 lang.by.year = lang.raw %>% 

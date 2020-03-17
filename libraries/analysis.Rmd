@@ -1,0 +1,146 @@
+---
+title: "Analyzing L.A. County's changing languages in Census microdata"
+output: github_document
+---
+
+```{r}
+library(ipumsr)
+library(tidyverse)
+```
+
+The IPUMS-USA extract comes with two files:
+
+1. A fixed-width data file in a compressed folder
+2. A data codebook in an XML format, which describes the data based on the [Data Documentation Initative](https://ddialliance.org/), or "DDI"
+
+```{r}
+ddi = read_ipums_ddi('data/usa_00010.xml')
+data = read_ipums_micro(ddi)
+```
+
+# The codebook
+
+The DDI details the variables in the extract.
+
+```{r}
+info.variables = ddi$var_info
+info.variables
+```
+
+The key column in this extract is [LANGUAGE](https://usa.ipums.org/usa-action/variables/LANGUAGE). The codebook provides the values for every LANGUAGED code.
+
+```{r}
+info.variables %>% 
+  filter(var_name == 'LANGUAGE') %>% 
+  `[[`('val_labels')
+```
+
+# The data
+
+All of the data in the extract. Most of these come preselected with any IPUMS extract.
+
+```{r}
+data %>% head()
+```
+
+The data is already filtered down to California. Filter it down again to just L.A. County, then keep only the relevant columns.
+
+```{r}
+la.data = data %>% 
+  filter(COUNTYFIP == 37) %>% 
+  select(YEAR, LANGUAGE, PERWT)
+
+la.data %>% head()
+```
+
+[PERWT](https://usa.ipums.org/usa-action/variables/PERWT#description_section) is the approxmiation of how many people this line of data represents. In this case, it would be the approximate amount of people speaking that language. It needs to be aggregated and summed to get total counts for the language.
+
+```{r}
+la.data.agg = la.data %>% 
+  group_by(YEAR, LANGUAGE) %>% 
+  summarise(PERWT = sum(PERWT))
+
+la.data.agg %>% head()
+```
+
+Reformat the data, separating the labels from the code, plus add a column for the percent of the population speaking that language in each year.
+
+```{r}
+la.languages = la.data.agg %>% 
+  group_by(YEAR) %>% 
+  mutate(percent = PERWT / sum(PERWT)) %>% 
+  ungroup(YEAR) %>% 
+  transmute(
+    year = YEAR,
+    langcode = zap_labels(LANGUAGE),
+    language = as_factor(LANGUAGE),
+    total = PERWT,
+    percent
+  )
+
+la.languages %>% head()
+```
+
+What were the top 10 languages spoken in 1980?
+
+```{r}
+la.languages %>% 
+  filter(langcode != 0) %>% 
+  filter(year == 1980) %>% 
+  arrange(-total) %>% 
+  head(10)
+```
+
+What were the top 10 languages spoken in 2018?
+
+```{r}
+la.languages %>% 
+  filter(langcode != 0) %>% 
+  filter(year == 2018) %>% 
+  arrange(-total) %>% 
+  head(10)
+```
+
+How have English and Spanish, far and away the top languages, changed over time?
+
+```{r}
+la.languages %>% 
+  filter(language %in% c('English', 'Spanish')) %>% 
+  ggplot(aes(year, percent, color = language)) +
+  geom_line() +
+  geom_point() +
+  theme_minimal()
+```
+
+How about the other languages?
+
+Start by keeping any language that has been in the top 10 for a particular year.
+
+```{r}
+top.10.yearly = la.languages %>% 
+  filter(langcode != 0) %>% 
+  group_by(year) %>% 
+  mutate(rankinyear = rank(-total)) %>% 
+  ungroup(year) %>% 
+  filter(rankinyear <= 10)
+
+top.10.yearly %>% head()
+```
+
+```{r}
+unique(top.10.yearly$language)
+```
+
+```{r}
+top.10.yearly %>%
+  filter(!language %in% c('English', 'Spanish')) %>% 
+  arrange(-year, -total) %>% 
+  # control ordering
+  mutate(language = language %>% as.character() %>% fct_inorder() %>% fct_rev()) %>% 
+  ggplot(aes(year, percent, fill = language)) +
+  geom_bar(stat = 'identity', position = 'dodge') +
+  scale_fill_brewer(palette = "Paired", name = 'Language') +
+  theme_minimal()
+  
+```
+
