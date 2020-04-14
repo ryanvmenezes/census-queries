@@ -1,9 +1,11 @@
+library(glue)
 library(tidyverse)
 library(tidycensus)
 
+geog = 'place'
 
 state.age = get_acs(
-  geography = 'county',
+  geography = geog,
   state = 'CA',
   variables = c(
     "B01001_001",
@@ -89,26 +91,34 @@ age.18.64 = state.age %>%
 
 age.18.64
 
-counties.age.groups = age.0.17 %>% left_join(age.18.64) %>% left_join(age.65.99)
+age.groups = age.0.17 %>% left_join(age.18.64) %>% left_join(age.65.99)
 
-counties.age.groups.long = counties.age.groups %>% 
+age.groups.long = age.groups %>% 
   pivot_longer(-NAME, names_to = 'age.group', values_to = 'pop') %>% 
   group_by(NAME) %>% 
   mutate(pop.pct = pop / sum(pop)) %>% 
   ungroup()
 
-counties.age.groups.long 
+age.groups.long 
 
-counties.age.groups.long %>% 
-  write_csv('ca-counties-age-groups.csv')
+age.groups.long %>% 
+  write_csv(glue('ca-{geog}-age-groups.csv'))
+
+age.groups %>% 
+  mutate(
+    total = (age.0.17 + age.18.64 + age.65.99),
+    pct.65 = age.65.99 / total
+  ) %>% 
+  filter(!str_detect(NAME, 'CDP')) %>%
+  arrange(-pct.65)
 
 statewide.65.plus = 0.1357759
   
-counties.age.groups.long %>% mutate(
+age.groups.long %>% mutate(
     age.group = fct_relevel(age.group, c('age.65.99','age.18.64','age.0.17')),
     NAME = fct_relevel(
       NAME,
-      counties.age.groups.long %>% 
+      age.groups.long %>% 
         filter(age.group == 'age.65.99') %>%
         mutate(
           zval = (pop.pct - statewide.65.plus) / sqrt(statewide.65.plus * (1 - statewide.65.plus) / pop),
